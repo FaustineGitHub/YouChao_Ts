@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      tools:context="com.youchao.dell.ui.activity.MainActivity"
+      xmlns:tools="http://schemas.android.com/tools"
+      >
+    <!-- 将活动条显示的菜单设置为如下：图标为系统的搜图片
+    android:showAsAction="ifRoom|withText" 有空间就显示图标和文字-->
+    <!--<item android:id="@+id/action_settings"
+          android:title="@string/action_settings"
+          android:orderInCategory="100"
+          app:showAsAction="never"/>-->
+    <item
+        android:id="@+id/action_websearch"
+        android:icon="@drawable/search_white"
+        app:showAsAction="ifRoom|withText"
+        android:title="搜索"/>
+</menu>

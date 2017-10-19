@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <include
+        layout="@layout/include_titlebar"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black_2F3032">
+        <RelativeLayout
+            android:layout_width="634px"
+            android:layout_height="906px"
+            android:layout_centerInParent="true">
+            <ImageView
+                android:layout_width="634px"
+                android:layout_height="906px"
+
+                android:background="@drawable/bg_erweima"/>
+            <ImageView
+                android:id="@+id/erweima_iv_usericon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/user_icon"
+                android:layout_marginTop="36px"
+                android:layout_marginLeft="36px"
+                android:layout_marginRight="24px"/>
+            <TextView
+                android:id="@+id/erweima_tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我很快乐"
+                android:layout_toRightOf="@id/erweima_iv_usericon"
+                android:layout_marginTop="56px"
+                android:textColor="@color/black_222"
+                android:textSize="32px"/>
+            <TextView
+                android:id="@+id/erweima_tv_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray_999"
+                android:text="ID: 798223"
+                android:layout_marginTop="16px"
+                android:layout_toRightOf="@id/erweima_iv_usericon"
+                android:layout_below="@id/erweima_tv_name"
+                android:textSize="24px"/>
+            <FrameLayout
+                android:layout_width="536px"
+                android:layout_height="550px"
+                android:layout_below="@id/erweima_tv_id"
+                android:layout_above="@+id/tv_erweima_tishi"
+                android:layout_marginTop="90px"
+                android:layout_marginBottom="78px"
+                android:layout_centerInParent="true"
+                android:background="@drawable/erweima_bg">
+                <ImageView
+                    android:id="@+id/erweima_iv"
+                    android:layout_width="274px"
+                    android:layout_height="274px"
+                    android:layout_marginTop="20px"
+                    android:layout_marginLeft="8px"
+
+                    android:layout_gravity="center"
+                    />
+            </FrameLayout>
+            <TextView
+                android:id="@+id/tv_erweima_tishi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="30px"
+                android:textSize="26px"
+                android:text="识别二维码,看我的个人主页哦 "/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

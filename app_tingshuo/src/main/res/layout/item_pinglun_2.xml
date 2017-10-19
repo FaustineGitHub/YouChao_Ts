@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:background="@color/white"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+    <!--<RelativeLayout
+        android:id="@+id/fujing_1"
+        android:layout_width="108px"
+        android:layout_height="108px"
+        android:layout_marginLeft="24px"
+        android:layout_centerVertical="true">
+
+    </RelativeLayout>-->
+    <RelativeLayout
+        android:id="@+id/fujing_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24px"
+        >
+        <ImageView
+            android:id="@+id/fujing_iv_usericon"
+            android:layout_width="64px"
+            android:layout_height="64px"
+            android:layout_marginTop="16px"
+            android:src="@drawable/user_icon"/>
+        <TextView
+            android:id="@+id/pinglun_tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30px"
+            android:text="消愁"
+            android:layout_toRightOf="@id/fujing_iv_usericon"
+            android:layout_marginTop="36px"
+            android:layout_marginLeft="16px"
+            android:textColor="@color/colorTabSelected"/>
+
+        <TextView
+            android:id="@+id/pinglun_tv_content_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="26px"
+            android:layout_below="@+id/pinglun_tv_name"
+            android:layout_alignLeft="@id/pinglun_tv_name"
+            android:layout_marginTop="16px"
+            android:layout_marginRight="24px"
+            android:layout_marginBottom="36px"
+            android:text="dfsgsdgsdgdgergwggsergi社会公示oh个i送额好贵i哦是如果i哦记得更加生动苹果键盘是佛的几个破的设计风格 个破欸如果个破欸如果拍摄日恶搞色额是如果和人格人格"
+            android:textColor="@color/black_222"/>
+
+
+        <TextView
+            android:id="@+id/pinglun_tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/pinglun_tv_name"
+            android:layout_below="@+id/pinglun_tv_content_normal"
+            android:text="9-21 10:33"
+            android:layout_marginRight="24px"
+            android:layout_marginBottom="24px"
+            android:textColor="@color/gray_999"
+            android:textSize="24px"/>
+
+        <TextView
+            android:id="@+id/pinglun_tv_huifu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/pinglun_tv_content_normal"
+            android:text="回复"
+            android:layout_marginRight="24px"
+            android:layout_marginBottom="24px"
+            android:textColor="@color/colorTabSelected"
+            android:textSize="24px"/>
+        <TextView
+            android:id="@+id/pinglun_tv_dianzan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/pinglun_tv_huifu"
+            android:layout_below="@+id/pinglun_tv_content_normal"
+            android:text="点赞"
+            android:layout_marginRight="34px"
+            android:layout_marginBottom="24px"
+            android:textColor="@color/colorTabSelected"
+            android:textSize="24px"/>
+    </RelativeLayout>
+
+    <View
+        style="@style/match_view"
+        android:layout_below="@id/fujing_2"
+        />
+
+</RelativeLayout>

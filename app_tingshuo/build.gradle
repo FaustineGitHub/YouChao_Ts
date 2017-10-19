@@ -1,0 +1,82 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+
+    defaultConfig {
+        applicationId "com.youchao.tingshuo"
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    //解决butterknife点击事件失效问题
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+   /* packagingOptions {
+        *//*exclude 'META-INF/maven/com.nineoldandroids/library/pom.xml'*//*
+        exclude 'org/bouncycastle/x509/CertPathReviewerMessages.properties'
+        exclude 'org/bouncycastle/x509/CertPathReviewerMessages_de.properties'
+        exclude 'com/tencent/mm/sdk/platformtools/rep5402863540997075488.tmp'
+    }*/
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.youth.banner:banner:1.4.9'
+    compile 'com.githang:status-bar-compat:0.4.4'
+    compile 'io.socket:socket.io-client:0.8.3'
+    testCompile 'junit:junit:4.12'
+    compile project(':autolayout')
+    compile files('libs/universal-image-loader-1.9.5.jar')
+    compile files('libs/android-async-http-1.4.9.jar')
+    compile files('libs/aliyun-oss-sdk-android-2.2.0.jar')
+    compile files('libs/httpclient-4.3.6.jar')
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
+    compile project(':lib-zxing')
+    compile project(':base-adapter-library')
+    //使用CoordinatorLayout需要在Gradle加入Support Design Library：
+    compile 'com.android.support:design:26.0.0-alpha1'
+    //顶部提示框
+    compile 'com.trycatch.android:mysnackbar:1.2.2'
+    compile 'com.shizhefei:ViewPagerIndicator:1.1.6'
+    //由于用到了v4和recyclerview所以也要导入他们
+    compile 'com.yanzhenjie:recyclerview-swipe:1.0.2'
+    //图片查看器
+    compile 'ch.ielse:imagewatcher:1.0.3'
+    //朋友圈发布图片和视频
+
+    //compile 'com.github.LuckSiege.PictureSelector:picture_library:v2.1.1'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    //仿探探、人人影视 卡片层叠 炫动滑动布局
+    compile 'com.github.mcxtzhang:ZLayoutManager:V1.1.0'
+    compile 'com.github.mcxtzhang:all-base-adapter:V1.8.0'
+    //视频播放
+    compile 'fm.jiecao:jiecaovideoplayer:4.8.3'
+    compile 'com.github.bumptech.glide:glide:4.0.0'
+    androidTestCompile 'junit:junit:4.12'
+    //超快和轻松为RecyclerView添加头部：RecyclerViewHeader
+    compile 'com.bartoszlipinski.recyclerviewheader:library:1.2.0'
+    //时间选择器
+    compile 'com.contrarywind:Android-PickerView:3.2.5'
+    //朋友圈发布图片和视频
+    compile 'com.github.LuckSiege.PictureSelector:picture_library:v2.1.1'
+    compile project(':galleryfinal')
+    compile project(':photopicker')
+}

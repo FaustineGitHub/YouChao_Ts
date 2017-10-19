@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorTabSelected">
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="match_parent"
+            android:layout_height="56px"
+            android:layout_marginLeft="24px"
+            android:layout_marginTop="20px"
+            android:layout_marginBottom="20px"
+            android:layout_marginRight="16px"
+            android:hint="搜索"
+            android:textSize="24px"
+            android:paddingLeft="30px"
+            android:singleLine="true"
+            android:textColorHint="@color/white"
+            android:layout_toLeftOf="@+id/cancel_search"
+            android:background="@drawable/sousuo"/>
+        <TextView
+            android:id="@+id/cancel_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="取消"
+            android:textSize="34px"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="24px"
+            android:layout_centerVertical="true"
+            android:textColor="@color/white"/>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

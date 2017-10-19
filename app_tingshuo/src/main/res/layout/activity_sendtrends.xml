@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical" >
+            <include layout="@layout/include_titlebar"/>
+            <EditText
+                android:id="@+id/content_et"
+                android:layout_width="match_parent"
+                android:layout_height="234px"
+                android:gravity="top"
+                android:hint="这一刻的想法..."
+                android:maxLength="500"
+                android:padding="5dp"
+                android:singleLine="false"
+                android:background="@null"
+                android:textColor="@color/black_222"
+                android:textSize="34px" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24px"
+                android:layout_marginTop="24px"
+                android:overScrollMode="never" />
+            <RelativeLayout
+                android:id="@+id/rl_address_xianshi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24px"
+                android:layout_marginTop="48px"
+                android:layout_marginBottom="24px"
+                android:background="@drawable/fabu_bg_gray">
+                <ImageView
+                    android:id="@+id/iv_dibiao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/dibiao_icon"
+                    android:paddingLeft="16px"
+                    android:layout_centerVertical="true"/>
+                <TextView
+                    android:id="@+id/tv_ditbiao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="显示地点"
+                    android:layout_marginLeft="8px"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/iv_dibiao"
+                    android:textColor="@color/gray_999"
+                    android:textSize="24px"/>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48px"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/iv_fabu_qq_zone"
+                android:layout_width="46px"
+                android:layout_height="36px"
+                android:layout_marginLeft="24px"
+                android:src="@drawable/qq_zone_gray"
+                />
+            <ImageView
+                android:id="@+id/iv_fabu_pengyouquan"
+                android:layout_width="46px"
+                android:layout_height="36px"
+                android:layout_marginLeft="36px"
+                android:src="@drawable/pengyouquan_gray"
+                />
+            <ImageView
+                android:id="@+id/iv_fabu_weibo"
+                android:layout_width="46px"
+                android:layout_height="36px"
+                android:layout_marginLeft="36px"
+                android:src="@drawable/icn_weibo_gray"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</ScrollView>

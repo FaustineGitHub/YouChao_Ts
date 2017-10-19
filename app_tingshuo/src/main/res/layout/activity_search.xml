@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <com.youchao.tingshuo.ui.widget.Search_View_1
+        android:id="@+id/search_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.youchao.tingshuo.ui.widget.Search_View_1>
+    <LinearLayout
+        android:layout_below="@id/search_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_marginTop="24px"
+        android:visibility="gone"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="热门大咖"
+            android:textSize="24px"
+            android:paddingTop="20px"
+            android:paddingBottom="20px"
+            android:paddingLeft="24px"
+            android:textColor="@color/gray_999"/>
+        <View
+            style="@style/match_view"
+            />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_sousuo_tuijian"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+    <!--<include
+        android:id="@+id/in_sousuo"
+        layout="@layout/item_sousuo" />
+    <ListView
+        android:id="@+id/lv_sousuo_tishi_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/in_sousuo"
+        android:background="@color/white"
+        android:divider="@null"
+        android:visibility="visible" />
+    -->
+</RelativeLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <include
+        android:id="@+id/title"
+        layout="@layout/include_titlebar"/>
+    <TextView
+        android:id="@+id/tv_pinglun_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="16px"
+        android:background="@color/white"
+        android:layout_below="@+id/title"
+        android:paddingBottom="16px"
+        android:text="全部评论(共115条)"
+        android:textColor="@color/black_222"
+        android:paddingLeft="24px"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/pinglun_list_in_fragment"
+        android:layout_below="@+id/tv_pinglun_number"
+        android:layout_marginTop="24px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+</RelativeLayout>

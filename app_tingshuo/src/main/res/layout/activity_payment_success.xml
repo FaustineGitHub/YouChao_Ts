@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:background="@color/white"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <include layout="@layout/include_titlebar"/>
+    <ImageView
+        android:id="@+id/success_img"
+        android:layout_width="160px"
+        android:layout_height="160px"
+        android:src="@drawable/user_icon"
+        android:layout_marginTop="300px"
+        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:id="@+id/success_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="支付成功!"
+        android:textColor="@color/black_222"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60px"
+        android:textSize="30px"
+        android:layout_below="@id/success_img"/>
+    <LinearLayout
+        android:layout_below="@id/success_tv"
+        android:layout_width="match_parent"
+        android:layout_marginTop="160px"
+        android:layout_height="76px"
+        android:weightSum="2"
+        android:layout_marginLeft="60px"
+        android:layout_marginRight="60px"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/success_tv_left"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="发表评价"
+            android:textSize="26px"
+            android:gravity="center"
+            android:layout_marginRight="20px"
+            android:textColor="@color/gray_999"
+            android:background="@drawable/text_bg_stroke_gray"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:id="@+id/success_tv_right"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="返回首页"
+            android:textSize="26px"
+            android:gravity="center"
+            android:layout_marginLeft="20px"
+            android:textColor="@color/colorPrimary"
+            android:background="@drawable/text_bg_stroke_gray"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+
+
+</RelativeLayout>

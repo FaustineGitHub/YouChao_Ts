@@ -1,0 +1,1 @@
+include ':autolayout', ':base-adapter-library', ':galleryfinal', ':lib-zxing', ':photopicker', ':reclib-qq', ':chatsdk', ':ResideMenu', ':app_tingshuo'

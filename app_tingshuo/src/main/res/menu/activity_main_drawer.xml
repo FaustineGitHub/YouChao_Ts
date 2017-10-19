@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_rivilege_center"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="特权中心"/>
+        <item
+            android:id="@+id/nav_my_focus"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="我的关注"/>
+        <item
+            android:id="@+id/nav_my_chat"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="我的聊天"/>
+        <item
+            android:id="@+id/nav_my_wallet"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="我的钱包"/>
+        <item
+            android:id="@+id/nav_my_video"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="我的视频"/>
+        <item
+            android:id="@+id/nav_help_feedback"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="帮助与反馈"/>
+    </group>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/ic_menu_share"
+            android:title="设置"/>
+        <item
+            android:id="@+id/nav_add"
+            android:icon="@drawable/ic_menu_send"
+            android:title="添加"/>
+    </group>
+
+    <!--<item android:title="">
+        <menu>
+            <item
+                android:id="@+id/nav_setting"
+                android:icon="@drawable/ic_menu_share"
+                android:title="设置"/>
+            <item
+                android:id="@+id/nav_add"
+                android:icon="@drawable/ic_menu_send"
+                android:title="添加"/>
+        </menu>
+    </item>-->
+
+
+</menu>

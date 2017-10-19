@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/MyApplication.iml" filepath="$PROJECT_DIR$/MyApplication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ResideMenu/ResideMenu.iml" filepath="$PROJECT_DIR$/ResideMenu/ResideMenu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app_tingshuo/app_tingshuo.iml" filepath="$PROJECT_DIR$/app_tingshuo/app_tingshuo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/autolayout/autolayout.iml" filepath="$PROJECT_DIR$/autolayout/autolayout.iml" />
+      <module fileurl="file://$PROJECT_DIR$/base-adapter-library/base-adapter-library.iml" filepath="$PROJECT_DIR$/base-adapter-library/base-adapter-library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chatsdk/chatsdk.iml" filepath="$PROJECT_DIR$/chatsdk/chatsdk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/galleryfinal/galleryfinal.iml" filepath="$PROJECT_DIR$/galleryfinal/galleryfinal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib-zxing/lib-zxing.iml" filepath="$PROJECT_DIR$/lib-zxing/lib-zxing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/photopicker/photopicker.iml" filepath="$PROJECT_DIR$/photopicker/photopicker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/reclib-qq/reclib-qq.iml" filepath="$PROJECT_DIR$/reclib-qq/reclib-qq.iml" />
+    </modules>
+  </component>
+</project>

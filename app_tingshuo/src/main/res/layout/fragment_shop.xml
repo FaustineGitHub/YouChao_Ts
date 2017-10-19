@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/shouye_title"
+        android:layout_width="match_parent"
+        android:layout_height="120px"
+        android:layout_marginBottom="36px"
+        android:background="@color/colorTabSelected">
+        <ImageView
+            android:id="@+id/iv_shouye_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/fabu"
+            android:layout_marginLeft="24px"
+            android:layout_marginRight="50px"
+            android:layout_centerVertical="true"/>
+        <ImageView
+            android:id="@+id/iv_shouye_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/search"
+            android:layout_marginRight="24px"
+            android:layout_marginLeft="50px"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"/>
+        <com.shizhefei.view.indicator.FixedIndicatorView
+            android:id="@+id/shouye_tab"
+            android:layout_width="250px"
+            android:layout_centerInParent="true"
+            android:layout_height="40dp"
+            />
+
+    </RelativeLayout>
+    <android.support.v4.view.ViewPager
+        android:layout_below="@id/shouye_title"
+        android:id="@+id/shouye_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v4.view.ViewPager>
+
+
+</RelativeLayout>

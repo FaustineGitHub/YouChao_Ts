@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_marginLeft="24px"
+    android:layout_marginRight="24px"
+    android:layout_height="380dp"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="20px"
+    >
+
+    <ImageView
+        android:id="@+id/iv_pipei_image"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:layout_gravity="center_horizontal"
+        tools:src="@drawable/banner3"/>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24px"
+        android:layout_marginTop="270dp">
+        <TextView
+            android:id="@+id/tv_pipei_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ana"
+            android:textColor="@color/colorTabSelected"
+            android:textSize="26px"/>
+        <TextView
+            android:id="@+id/tv_pipei_percent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="91%匹配"
+            android:background="@drawable/text_bg_stroke_blue"
+            android:layout_marginLeft="16px"
+            android:layout_toRightOf="@id/tv_pipei_name"
+            android:textColor="@color/colorTabSelected"
+            android:textSize="24px"/>
+        <TextView
+            android:id="@+id/tv_pipei_constellation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="水瓶座"
+            android:layout_marginTop="20px"
+            android:layout_below="@id/tv_pipei_name"
+            android:textColor="@color/gray_999"
+            android:textSize="26px"/>
+        <TextView
+            android:id="@+id/tv_pipei_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="24岁"
+            android:layout_marginLeft="12px"
+            android:layout_alignBottom="@id/tv_pipei_constellation"
+            android:layout_toRightOf="@id/tv_pipei_constellation"
+            android:textColor="@color/gray_999"
+            android:textSize="26px"/>
+        <TextView
+            android:id="@+id/tv_pipei_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="32分钟前"
+            android:layout_marginTop="20px"
+            android:layout_below="@id/tv_pipei_constellation"
+            android:textColor="@color/gray_999"
+            android:textSize="26px"/>
+    </RelativeLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:background="#F05079"
+        android:visibility="gone"
+        android:text="订阅"/>
+
+    <!-- <TextView
+        android:id="@+id/tvPrecent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|bottom"
+        android:layout_margin="3dp"
+        android:textColor="@color/colorPrimaryDark"
+        tools:text="1/13"/>-->
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="379dp"
+        android:background="@color/bg_gray_999" />
+
+
+</android.support.v7.widget.CardView>
