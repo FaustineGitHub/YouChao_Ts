@@ -17,6 +17,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bartoszlipinski.recyclerviewheader.RecyclerViewHeader;
+import com.scwang.smartrefresh.header.MaterialHeader;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
+import com.scwang.smartrefresh.layout.footer.BallPulseFooter;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.youchao.tingshuo.R;
 import com.youchao.tingshuo.bean.CommonNews;
 import com.youchao.tingshuo.ui.activity.mine.PersonalIntroduceActivity;
@@ -54,10 +61,8 @@ public class GuanZhuFragment extends BaseFragment implements View.OnClickListene
     RecyclerView mRecyclerViewShouye;
     @Bind(R.id.header)
     RecyclerViewHeader mHeader;
-    /*@Bind(R.id.recycler_view_shouye)
-    SwipeMenuRecyclerView mRecyclerViewShouye;*/
     @Bind(R.id.swipe_layout_shouye)
-    SwipeRefreshLayout mSwipeLayoutShouye;
+    SmartRefreshLayout mSmartRefreshLayout;
     @Bind(R.id.tv_tuijian_type)
     TextView mTvTuijianType;
 
@@ -86,7 +91,7 @@ public class GuanZhuFragment extends BaseFragment implements View.OnClickListene
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_guanzhu, container, false);
+        View view = inflater.inflate(R.layout.fragment_guanzhu_recycler, container, false);
         ButterKnife.bind(this, view);
         return view;
     }
@@ -106,7 +111,6 @@ public class GuanZhuFragment extends BaseFragment implements View.OnClickListene
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         mIdRecyclerviewTuijian.setLayoutManager(linearLayoutManager);
-
         //设置适配器
         mAdapter = new GalleryAdapter(getActivity(), mDatas);
         mIdRecyclerviewTuijian.setAdapter(mAdapter);
@@ -187,6 +191,18 @@ public class GuanZhuFragment extends BaseFragment implements View.OnClickListene
     }
 
     private void setAdapterListener(final CircleMessage1Adapter circleMessageAdapter) {
+        mSmartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(RefreshLayout refreshlayout) {
+                refreshlayout.finishRefresh(2000);
+            }
+        });
+        mSmartRefreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
+            @Override
+            public void onLoadmore(RefreshLayout refreshlayout) {
+                refreshlayout.finishLoadmore(2000);
+            }
+        });
         //设置item的点击事件
         circleMessageAdapter.setOnTotalItemClickListener(new CircleMessage1Adapter.OnTotalItemClickListener() {
             @Override

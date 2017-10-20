@@ -56,7 +56,8 @@ dependencies {
     //顶部提示框
     compile 'com.trycatch.android:mysnackbar:1.2.2'
     compile 'com.shizhefei:ViewPagerIndicator:1.1.6'
-    //由于用到了v4和recyclerview所以也要导入他们
+    //由于用到了v4和recyclerview所以也要导入他们,
+    //RecyclerView侧滑菜单，Item拖拽，滑动删除Item，自动加载更多，HeaderView，FooterView，Item分组黏贴。 https://github.com/yanzhenjie/SwipeRe…
     compile 'com.yanzhenjie:recyclerview-swipe:1.0.2'
     //图片查看器
     compile 'ch.ielse:imagewatcher:1.0.3'

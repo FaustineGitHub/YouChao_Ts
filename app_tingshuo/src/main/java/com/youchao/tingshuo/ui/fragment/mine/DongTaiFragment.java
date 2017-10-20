@@ -19,6 +19,10 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.bartoszlipinski.recyclerviewheader.RecyclerViewHeader;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.youchao.tingshuo.R;
 import com.youchao.tingshuo.bean.CommonNews;
 import com.youchao.tingshuo.ui.activity.mine.PersonalIntroduceActivity;
@@ -60,7 +64,7 @@ public class DongTaiFragment extends BaseFragment implements View.OnClickListene
     /*@Bind(R.id.recycler_view_shouye)
     SwipeMenuRecyclerView mRecyclerViewShouye;*/
     @Bind(R.id.swipe_layout_shouye)
-    SwipeRefreshLayout mSwipeLayoutShouye;
+    SmartRefreshLayout mSmartRefreshLayout;
 
     private GalleryAdapter mAdapter;
     private List<Integer> mDatas;
@@ -88,7 +92,7 @@ public class DongTaiFragment extends BaseFragment implements View.OnClickListene
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_guanzhu, container, false);
+        View view = inflater.inflate(R.layout.fragment_guanzhu_recycler, container, false);
         ButterKnife.bind(this, view);
         return view;
     }
@@ -178,6 +182,18 @@ public class DongTaiFragment extends BaseFragment implements View.OnClickListene
     }
 
     private void setAdapterListener(final CircleMessageAdapter circleMessageAdapter) {
+        mSmartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(RefreshLayout refreshlayout) {
+                refreshlayout.finishRefresh(2000);
+            }
+        });
+        mSmartRefreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
+            @Override
+            public void onLoadmore(RefreshLayout refreshlayout) {
+                refreshlayout.finishLoadmore(2000);
+            }
+        });
         //设置item的点击事件
         circleMessageAdapter.setOnTotalItemClickListener(new CircleMessageAdapter.OnTotalItemClickListener() {
             @Override

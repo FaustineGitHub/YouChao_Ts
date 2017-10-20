@@ -8,26 +8,47 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white">
-        <com.bartoszlipinski.recyclerviewheader.RecyclerViewHeader
-            android:id="@+id/header"
-            android:layout_width="match_parent"
-            android:layout_height="96px"
-            android:layout_gravity="center_horizontal|top">
-            <include layout="@layout/item_recycler_header"/>
-            <View
-                style="@style/match_view"
-                />
-        </com.bartoszlipinski.recyclerviewheader.RecyclerViewHeader>
+
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/swipe_layout_shouye"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recycler_view_shouye"
+
+            <com.youchao.tingshuo.view.MyScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            </android.support.v7.widget.RecyclerView>
+                android:layout_height="match_parent"
+                android:scrollbars="none"
+                android:fillViewport="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <com.bartoszlipinski.recyclerviewheader.RecyclerViewHeader
+                        android:id="@+id/header"
+                        android:layout_width="match_parent"
+                        android:layout_height="96px"
+                        android:layout_gravity="center_horizontal|top">
+                        <include layout="@layout/item_recycler_header"/>
+                        <View
+                            style="@style/match_view"
+                            />
+                    </com.bartoszlipinski.recyclerviewheader.RecyclerViewHeader>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycler_view_shouye"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    </android.support.v7.widget.RecyclerView>
+
+
+                </RelativeLayout>
+
+            </com.youchao.tingshuo.view.MyScrollView>
+
+
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>
         <!--
 

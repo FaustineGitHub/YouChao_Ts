@@ -12,6 +12,11 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.youchao.tingshuo.R;
 import com.youchao.tingshuo.bean.CommonNews;
 import com.youchao.tingshuo.ui.activity.shouye.PingLunDongTaiActivity;
@@ -40,7 +45,7 @@ public class DongTaiActivity extends BaseActivity implements View.OnClickListene
     @Bind(R.id.recycler_view_dongtai)
     RecyclerView mRecyclerViewDongtai;
     @Bind(R.id.swipe_layout_dongtai)
-    SwipeRefreshLayout mSwipeLayoutDongtai;
+    SmartRefreshLayout mSmartRefreshLayout;
 
     private String tag = "DongTaiActivity";
 
@@ -148,6 +153,18 @@ public class DongTaiActivity extends BaseActivity implements View.OnClickListene
     }
 
     private void setAdapterListener(final CircleMessageAdapter circleMessageAdapter) {
+        mSmartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(RefreshLayout refreshlayout) {
+                refreshlayout.finishRefresh(2000);
+            }
+        });
+        mSmartRefreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
+            @Override
+            public void onLoadmore(RefreshLayout refreshlayout) {
+                refreshlayout.finishLoadmore(2000);
+            }
+        });
         //设置item的点击事件
         circleMessageAdapter.setOnTotalItemClickListener(new CircleMessageAdapter.OnTotalItemClickListener() {
             @Override

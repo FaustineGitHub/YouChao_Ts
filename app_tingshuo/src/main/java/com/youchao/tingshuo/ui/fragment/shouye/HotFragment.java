@@ -16,8 +16,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bartoszlipinski.recyclerviewheader.RecyclerViewHeader;
+import com.scwang.smartrefresh.header.MaterialHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
+import com.scwang.smartrefresh.layout.footer.BallPulseFooter;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.youchao.tingshuo.R;
@@ -60,7 +63,7 @@ public class HotFragment extends BaseFragment implements View.OnClickListener {
     @Bind(R.id.tv_tuijian_type)
     TextView mTvTuijianType;
     @Bind(R.id.swipe_layout_shouye)
-    SmartRefreshLayout mSwipeLayoutShouye;
+    SmartRefreshLayout mSmartRefreshLayout;
 
     private GalleryAdapter mAdapter;
     private List<Integer> mDatas;
@@ -116,15 +119,19 @@ public class HotFragment extends BaseFragment implements View.OnClickListener {
 
     private void initData() {
         initSwipeMenuRecyclerView();
+
         mockData();
         processData();
+
     }
 
     private void initSwipeMenuRecyclerView() {
-        /*FullyLinearLayoutManager manager = new FullyLinearLayoutManager(getActivity());
-        manager.setOrientation(LinearLayout.VERTICAL);
-        manager.setSmoothScrollbarEnabled(true);
-        mRecyclerViewShouye.setLayoutManager(manager);*/
+        /*mRecyclerViewShouye.setLayoutManager(new LinearLayoutManager(getActivity()){
+            @Override
+            public boolean canScrollVertically() {
+                return false;//防止滑动卡  你刚滑动 不卡？没感觉
+            }
+        });*/
 
         mRecyclerViewShouye.setLayoutManager(new LinearLayoutManager(getActivity()));// 布局管理器。
         mRecyclerViewShouye.setHasFixedSize(true);// 如果Item够简单，高度是确定的，打开FixSize将提高性能。
@@ -193,13 +200,13 @@ public class HotFragment extends BaseFragment implements View.OnClickListener {
     }
 
     private void setAdapterListener(final CircleMessageAdapter circleMessageAdapter) {
-        mSwipeLayoutShouye.setOnRefreshListener(new OnRefreshListener() {
+        mSmartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
                 refreshlayout.finishRefresh(2000);
             }
         });
-        mSwipeLayoutShouye.setOnLoadmoreListener(new OnLoadmoreListener() {
+        mSmartRefreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
             @Override
             public void onLoadmore(RefreshLayout refreshlayout) {
                 refreshlayout.finishLoadmore(2000);
