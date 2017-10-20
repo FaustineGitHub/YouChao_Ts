@@ -15,6 +15,7 @@
     <color name="view_bg">#F6F6F6</color>
     <color name="bg_gray_999">#99999999</color>
     <color name="gray_df">#DFDFDF</color>
+    <color name="gray_d7">#D7D7D7</color>
     <color name="gray_f4">#F4F4F4</color>
     <color name="dialog_share">#EFEFEF</color>
     <color name="black">#000000</color>
@@ -23,5 +24,7 @@
     <color name="colorTabNormal">#777777</color>
     <color name="colorTabSelected">#00D1CA</color>
     <color name="blue_3192F6">#3192F6</color>
+    <color name="red_error">#FF4354</color>
+    <color name="green_success">#71D43C</color>
 
 </resources>

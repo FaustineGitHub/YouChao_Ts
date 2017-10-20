@@ -10,14 +10,16 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_login"
+        android:background="@drawable/bg_login_blue"
         android:scaleType="fitXY"
-        />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
     <ImageView
         android:id="@+id/iv_register_back"
         android:layout_width="18px"
         android:layout_height="24px"
-        android:src="@drawable/back_left_white"
+        android:src="@drawable/left_back"
         android:layout_marginTop="66px"
         android:layout_marginLeft="36px"
         />
@@ -28,135 +30,112 @@
         android:src="@drawable/login_logo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="170px"/>
-    <RelativeLayout
-        android:id="@+id/register_rl_account"
+    <LinearLayout
+        android:id="@+id/ll_user"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/iv_register_icon"
-        android:layout_height="96px"
         android:layout_marginLeft="60px"
         android:layout_marginRight="60px"
         android:layout_marginTop="102px"
-        >
-        <EditText
-            android:id="@+id/register_et_account"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:id="@+id/register_rl_account"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/bg_edit"
-            android:drawableLeft="@drawable/name"
-            android:drawablePadding="40px"
-            android:paddingLeft="40px"
-            android:gravity="center_vertical"
-            android:hint="请输入手机号/昵称/邮箱"
-            android:text=""
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="32px"/>
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/register_rl_password"
-        android:layout_width="match_parent"
-        android:layout_height="96px"
-        android:layout_below="@id/register_rl_account"
-        android:layout_marginLeft="60px"
-        android:layout_marginRight="60px"
-        android:layout_marginTop="24px"
-        >
-        <ImageView
-            android:id="@+id/iv_password_state"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:paddingLeft="12px"
-            android:paddingRight="12px"
-            android:src="@drawable/ic_eye_close"
-            android:visibility="gone"
-            />
-        <ImageView
-            android:id="@+id/iv_password_clear"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_centerVertical="true"
-            android:layout_toLeftOf="@id/iv_password_state"
-            android:paddingLeft="12px"
-            android:paddingRight="12px"
-            android:visibility="gone"
-            android:src="@drawable/ic_close_grey"
-            />
-        <EditText
-            android:id="@+id/register_et_password"
+            android:layout_height="90px"
+            android:layout_marginTop="10px"
+            >
+            <EditText
+                android:id="@+id/register_et_account"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:hint="请输入手机号/昵称/邮箱"
+                android:text=""
+                android:background="@null"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="32px"/>
+
+        </RelativeLayout>
+        <View
+            android:layout_below="@id/register_et_account"
+            style="@style/match_view_white"/>
+        <RelativeLayout
+            android:id="@+id/register_rl_password"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/bg_edit"
-            android:layout_toLeftOf="@id/iv_password_clear"
-            android:drawableLeft="@drawable/mima"
-            android:drawablePadding="40px"
-            android:paddingLeft="40px"
-            android:gravity="center_vertical"
-            android:hint="请输入密码"
-            android:inputType="textPassword"
-            android:text=""
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="32px"/>
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/register_getyzm"
-        android:layout_width="match_parent"
-        android:layout_below="@id/register_rl_password"
-        android:layout_marginLeft="60px"
-        android:layout_marginRight="60px"
-        android:layout_height="100px"
-        android:layout_marginTop="30px">
-
-        <com.youchao.tingshuo.ui.widget.TimeButton
-            android:id="@+id/tv_getyzm"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/zxing_right"
-            android:gravity="center"
-            android:text="发送验证码"
-            android:textColor="@color/white"
-            android:textSize="32px"
-            />
-
-
-        <EditText
-            android:id="@+id/et_yzm"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:drawableLeft="@drawable/zxing_white"
-            android:drawablePadding="40px"
-            android:paddingLeft="40px"
-            android:layout_marginRight="30px"
-            android:layout_toLeftOf="@id/tv_getyzm"
-            android:background="@drawable/zxing_left_white"
-            android:gravity="center_vertical"
-            android:hint="请输入验证码"
-            android:inputType="number"
-            android:singleLine="true"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="30px"
-            android:layout_alignBaseline="@+id/tv_getyzm"
-            android:layout_alignBottom="@+id/tv_getyzm"
-            android:layout_alignParentLeft="true"
-            />
-
-
-    </RelativeLayout>
+            android:layout_height="90px"
+            android:layout_marginTop="10px"
+            >
+            <EditText
+                android:id="@+id/register_et_password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:hint="请输入密码"
+                android:inputType="textPassword"
+                android:text=""
+                android:background="@null"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="32px"/>
+        </RelativeLayout>
+        <View
+            android:layout_below="@id/register_et_account"
+            style="@style/match_view_white"/>
+        <RelativeLayout
+            android:id="@+id/register_getyzm"
+            android:layout_width="match_parent"
+            android:layout_height="90px"
+            android:layout_marginTop="20px"
+            android:layout_marginBottom="10px"
+            >
+            <com.youchao.tingshuo.ui.widget.TimeButton
+                android:id="@+id/tv_getyzm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/yzm_bg_white"
+                android:gravity="center"
+                android:text="发送验证码"
+                android:layout_centerVertical="true"
+                android:textColor="@color/white"
+                android:textSize="32px"
+                android:paddingLeft="5px"
+                android:paddingRight="5px"
+                android:layout_alignParentRight="true"
+                />
+            <EditText
+                android:id="@+id/et_yzm"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="30px"
+                android:layout_toLeftOf="@id/tv_getyzm"
+                android:gravity="center_vertical"
+                android:hint="请输入验证码"
+                android:inputType="number"
+                android:background="@null"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="30px"
+                />
+        </RelativeLayout>
+        <View
+            android:layout_below="@id/register_et_account"
+            style="@style/match_view_white"/>
+    </LinearLayout>
     <TextView
         android:id="@+id/tv_register"
         android:layout_width="match_parent"
         android:layout_height="92px"
         android:layout_marginTop="32dp"
-        android:background="@drawable/bg_text"
+        android:background="@drawable/bg_btn_register"
         android:gravity="center"
         android:text="注册"
-        android:textColor="@color/white"
+        android:textColor="@color/colorPrimary"
         android:textSize="32px"
         android:layout_marginLeft="60px"
         android:layout_marginRight="60px"
-        android:layout_below="@+id/register_getyzm"
+        android:layout_below="@+id/ll_user"
         />
 </RelativeLayout>

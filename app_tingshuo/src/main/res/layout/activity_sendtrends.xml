@@ -19,12 +19,23 @@
                 android:layout_height="234px"
                 android:gravity="top"
                 android:hint="这一刻的想法..."
-                android:maxLength="500"
+                android:maxLength="300"
                 android:padding="5dp"
+                android:layout_marginLeft="24px"
                 android:singleLine="false"
                 android:background="@null"
                 android:textColor="@color/black_222"
                 android:textSize="34px" />
+            <TextView
+                android:id="@+id/tv_edit_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0/300"
+                android:layout_marginLeft="24px"
+                android:textColor="@color/colorPrimary"
+                android:textSize="24px"
+                android:layout_marginTop="24px"
+                />
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler"
                 android:layout_width="match_parent"

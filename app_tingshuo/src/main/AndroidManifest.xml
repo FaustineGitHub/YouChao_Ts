@@ -102,6 +102,11 @@
         <activity
             android:name="com.youchao.tingshuo.ui.activity.login.SplashActivity"
             android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
 
         </activity>
 
@@ -111,11 +116,7 @@
                   android:windowSoftInputMode="adjustUnspecified|stateHidden"
                   android:theme="@style/SplashTheme"
                   android:label="">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity android:name="com.youchao.tingshuo.ui.activity.login.GuideActivity"
                   android:screenOrientation="portrait"

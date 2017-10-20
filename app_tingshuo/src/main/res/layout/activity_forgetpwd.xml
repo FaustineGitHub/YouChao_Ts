@@ -4,146 +4,122 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
     <include
-        layout="@layout/include_titlebar"/>
+        android:id="@+id/title_forget"
+        layout="@layout/include_titlebar_blue"/>
     <ImageView
         android:id="@+id/iv_register_icon"
         android:layout_width="188px"
         android:layout_height="188px"
         android:src="@drawable/login_logo"
+        android:visibility="gone"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="170px"/>
-    <RelativeLayout
-        android:id="@+id/register_rl_account"
+    <LinearLayout
+        android:id="@+id/ll_forget"
         android:layout_width="match_parent"
-        android:layout_below="@id/iv_register_icon"
-        android:layout_height="96px"
-        android:layout_marginLeft="60px"
-        android:layout_marginRight="60px"
-        android:layout_marginTop="50px"
-        >
-        <EditText
-            android:id="@+id/register_et_account"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:paddingLeft="24px"
+        android:paddingTop="20px"
+        android:layout_below="@id/title_forget">
+        <RelativeLayout
+            android:id="@+id/register_rl_account"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/bg_edit_black"
-            android:drawableLeft="@drawable/shoujihao_black"
-            android:drawablePadding="40px"
-            android:paddingLeft="40px"
-            android:gravity="center_vertical"
-            android:hint="请输入手机号"
-            android:inputType="number"
-            android:text=""
-            android:textColor="@color/black_222"
-            android:textColorHint="@color/gray_999"
-            android:textSize="32px"/>
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/register_getyzm"
-        android:layout_width="match_parent"
-        android:layout_below="@id/register_rl_account"
-        android:layout_marginLeft="60px"
-        android:layout_marginRight="60px"
-        android:layout_height="100px"
-        android:layout_marginTop="30px">
-
-        <com.youchao.tingshuo.ui.widget.TimeButton
-            android:id="@+id/tv_getyzm"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/zxing_bg_yellow"
-            android:gravity="center"
-            android:text="发送验证码"
-            android:textColor="@color/white"
-            android:textSize="32px"
+            android:layout_height="96px"
+            android:layout_marginRight="24px"
+            >
+            <EditText
+                android:id="@+id/register_et_account"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="请输入手机号"
+                android:inputType="number"
+                android:text=""
+                android:textColor="@color/black_222"
+                android:textColorHint="@color/gray_d7"
+                android:textSize="32px"/>
+        </RelativeLayout>
+        <View
+            style="@style/match_view"
             />
-
-
-        <EditText
-            android:id="@+id/et_yzm"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:drawableLeft="@drawable/zxing_black"
-            android:drawablePadding="40px"
-            android:paddingLeft="40px"
-            android:layout_marginRight="30px"
-            android:layout_toLeftOf="@id/tv_getyzm"
-            android:background="@drawable/zxing_left"
-            android:gravity="center_vertical"
-            android:hint="请输入验证码"
-            android:inputType="number"
-            android:singleLine="true"
-            android:textColor="@color/black_222"
-            android:textColorHint="@color/gray_999"
-            android:textSize="30px"
-            android:layout_alignBaseline="@+id/tv_getyzm"
-            android:layout_alignBottom="@+id/tv_getyzm"
-            android:layout_alignParentLeft="true"
-            />
-
-
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/register_rl_new_password"
-        android:layout_width="match_parent"
-        android:layout_height="96px"
-        android:layout_below="@id/register_getyzm"
-        android:layout_marginLeft="60px"
-        android:layout_marginRight="60px"
-        android:layout_marginTop="24px"
-        >
-        <ImageView
-            android:id="@+id/iv_password_state"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:paddingLeft="12px"
-            android:paddingRight="12px"
-            android:src="@drawable/ic_eye_close"
-            android:visibility="gone"
-            />
-        <ImageView
-            android:id="@+id/iv_password_clear"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_centerVertical="true"
-            android:layout_toLeftOf="@id/iv_password_state"
-            android:paddingLeft="12px"
-            android:paddingRight="12px"
-            android:visibility="gone"
-            android:src="@drawable/ic_close_grey"
-            />
-        <EditText
-            android:id="@+id/register_et_new_password"
+        <RelativeLayout
+            android:id="@+id/register_getyzm"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/bg_edit_black"
-            android:layout_toLeftOf="@id/iv_password_clear"
-            android:drawableLeft="@drawable/mima_black"
-            android:drawablePadding="40px"
-            android:paddingLeft="40px"
-            android:gravity="center_vertical"
-            android:hint="请输入新密码"
-            android:inputType="textPassword"
-            android:text=""
-            android:textColor="@color/black_222"
-            android:textColorHint="@color/gray_999"
-            android:textSize="32px"/>
-    </RelativeLayout>
+            android:layout_below="@id/register_rl_account"
+            android:layout_height="100px"
+            android:layout_marginRight="24px">
+
+            <com.youchao.tingshuo.ui.widget.TimeButton
+                android:id="@+id/tv_getyzm"
+                android:layout_width="wrap_content"
+                android:layout_height="70px"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/yzm_bg_blue"
+                android:gravity="center"
+                android:layout_centerVertical="true"
+                android:text="获取验证码"
+                android:paddingLeft="5px"
+                android:paddingRight="5px"
+                android:textColor="@color/colorPrimary"
+                android:textSize="32px"
+                />
+            <EditText
+                android:id="@+id/et_yzm"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="30px"
+                android:layout_toLeftOf="@id/tv_getyzm"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="请输入验证码"
+                android:inputType="number"
+                android:singleLine="true"
+                android:textColor="@color/black_222"
+                android:textColorHint="@color/gray_d7"
+                android:textSize="30px"
+                />
+        </RelativeLayout>
+        <View
+            style="@style/match_view"
+            />
+        <RelativeLayout
+            android:id="@+id/register_rl_new_password"
+            android:layout_width="match_parent"
+            android:layout_height="96px"
+            android:layout_marginRight="24px"
+            >
+            <EditText
+                android:id="@+id/register_et_new_password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="请输入新密码"
+                android:inputType="textPassword"
+                android:text=""
+                android:textColor="@color/black_222"
+                android:textColorHint="@color/gray_d7"
+                android:textSize="32px"/>
+        </RelativeLayout>
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tv_register"
         android:layout_width="match_parent"
         android:layout_height="92px"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/bg_text"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/bg_btn_forget_pwd"
         android:gravity="center"
         android:text="完成"
         android:textColor="@color/white"
         android:textSize="32px"
         android:layout_marginLeft="60px"
         android:layout_marginRight="60px"
-        android:layout_below="@+id/register_rl_new_password"
+        android:layout_below="@+id/ll_forget"
         />
 
 </RelativeLayout>

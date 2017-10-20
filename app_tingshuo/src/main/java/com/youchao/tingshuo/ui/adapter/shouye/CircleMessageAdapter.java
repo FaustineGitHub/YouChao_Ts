@@ -19,6 +19,7 @@ import com.youchao.tingshuo.bean.CommonNews;
 import com.youchao.tingshuo.ui.activity.shouye.ImagePagerActivity;
 import com.youchao.tingshuo.utils.ImageLoaderUtil;
 import com.youchao.tingshuo.utils.L;
+import com.youchao.tingshuo.view.CollapsibleTextView;
 import com.youchao.tingshuo.view.NoScrollGridView;
 
 import java.util.ArrayList;
@@ -423,7 +424,8 @@ public class CircleMessageAdapter extends RecyclerView.Adapter<CircleMessageAdap
     class BaseViewHolder extends RecyclerView.ViewHolder{
         LinearLayout ll_zhuanfa,ll_pinglun,ll_dianzan;//点击事件
         ImageView iv_circle_icon,ivDianzan;
-        TextView tv_circle_name,tv_circle_date,tv_circle_info,tv_pinglun,tv_dianzan,tv_guanzhu;
+        TextView tv_circle_info;
+        TextView tv_circle_name,tv_circle_date,tv_pinglun,tv_dianzan,tv_guanzhu;
 
         public BaseViewHolder(View itemView) {
             super(itemView);

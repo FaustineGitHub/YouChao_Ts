@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +16,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bartoszlipinski.recyclerviewheader.RecyclerViewHeader;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.youchao.tingshuo.R;
 import com.youchao.tingshuo.bean.CommonNews;
 import com.youchao.tingshuo.ui.activity.mine.PersonalIntroduceActivity;
@@ -53,12 +56,11 @@ public class HotFragment extends BaseFragment implements View.OnClickListener {
     RecyclerView mRecyclerViewShouye;
     @Bind(R.id.header)
     RecyclerViewHeader mHeader;
-    /*@Bind(R.id.recycler_view_shouye)
-    SwipeMenuRecyclerView mRecyclerViewShouye;*/
-    @Bind(R.id.swipe_layout_shouye)
-    SwipeRefreshLayout mSwipeLayoutShouye;
+
     @Bind(R.id.tv_tuijian_type)
     TextView mTvTuijianType;
+    @Bind(R.id.swipe_layout_shouye)
+    SmartRefreshLayout mSwipeLayoutShouye;
 
     private GalleryAdapter mAdapter;
     private List<Integer> mDatas;
@@ -85,7 +87,7 @@ public class HotFragment extends BaseFragment implements View.OnClickListener {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_guanzhu, container, false);
+        View view = inflater.inflate(R.layout.fragment_guanzhu_recycler, container, false);
         ButterKnife.bind(this, view);
         return view;
     }
@@ -155,15 +157,15 @@ public class HotFragment extends BaseFragment implements View.OnClickListener {
         imgUrls4.add("http://attachments.gfan.com/forum/201504/07/095447evh9cigggne1celv.jpg");
         imgUrls4.add("http://img.sucai.redocn.com/attachments/images/201207/20120707/Redocn_2012070709495130.jpg");
         //String title, String source, String time, String url, String[] imgs, String cover, String userIcon, String zhuanfa, String pinglun, String dianzan//
-        list.add(new CommonNews("春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "", imgUrls4, 0, "", "", "", "45", false, false));
-        list.add(new CommonNews("春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "", imgUrls1, 0, "", "", "", "32", false, false));
-        list.add(new CommonNews("春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "http://gslb.miaopai.com/stream/ed5HCfnhovu3tyIQAiv60Q__.mp4", imgUrls2, 1, "", "", "", "13", false, true));
-        list.add(new CommonNews("春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "", imgUrls1, 0, "", "", "", "45", false, false));
-        list.add(new CommonNews("春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "", imgUrls3, 1, "", "", "", "45", false, true));
-        list.add(new CommonNews("春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "http://gslb.miaopai.com/stream/ed5HCfnhovu3tyIQAiv60Q__.mp4", imgUrls2, 1, "", "", "", "26", false, false));
-        list.add(new CommonNews("春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "", imgUrls4, 1, "", "", "", "454", false, true));
-        list.add(new CommonNews("春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "", imgUrls3, 1, "", "", "", "22", false, true));
-        list.add(new CommonNews("春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "", imgUrls2, 2, "", "", "", "245", false, false));
+        list.add(new CommonNews(0,"春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "", imgUrls4, 0, "", "", "", "45", false, false));
+        list.add(new CommonNews(1,"春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "", imgUrls1, 0, "", "", "", "32", false, false));
+        list.add(new CommonNews(2,"春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "http://gslb.miaopai.com/stream/ed5HCfnhovu3tyIQAiv60Q__.mp4", imgUrls2, 1, "", "", "", "13", false, true));
+        list.add(new CommonNews(3,"春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "", imgUrls1, 0, "", "", "", "45", false, false));
+        list.add(new CommonNews(4,"春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "", imgUrls3, 1, "", "", "", "45", false, true));
+        list.add(new CommonNews(5,"春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "http://gslb.miaopai.com/stream/ed5HCfnhovu3tyIQAiv60Q__.mp4", imgUrls2, 1, "", "", "", "26", false, false));
+        list.add(new CommonNews(6,"春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "", imgUrls4, 1, "", "", "", "454", false, true));
+        list.add(new CommonNews(7,"春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "", imgUrls3, 1, "", "", "", "22", false, true));
+        list.add(new CommonNews(8,"春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "", imgUrls2, 2, "", "", "", "245", false, false));
     }
 
     private void processData() {
@@ -191,6 +193,18 @@ public class HotFragment extends BaseFragment implements View.OnClickListener {
     }
 
     private void setAdapterListener(final CircleMessageAdapter circleMessageAdapter) {
+        mSwipeLayoutShouye.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(RefreshLayout refreshlayout) {
+                refreshlayout.finishRefresh(2000);
+            }
+        });
+        mSwipeLayoutShouye.setOnLoadmoreListener(new OnLoadmoreListener() {
+            @Override
+            public void onLoadmore(RefreshLayout refreshlayout) {
+                refreshlayout.finishLoadmore(2000);
+            }
+        });
         //设置item的点击事件
         circleMessageAdapter.setOnTotalItemClickListener(new CircleMessageAdapter.OnTotalItemClickListener() {
             @Override

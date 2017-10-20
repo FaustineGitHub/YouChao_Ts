@@ -33,10 +33,6 @@ import butterknife.OnClick;
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
     @Bind(R.id.login_et_account)
     EditText mLoginEtAccount;
-    @Bind(R.id.iv_password_state)
-    ImageView mIvPasswordState;
-    @Bind(R.id.iv_password_clear)
-    ImageView mIvPasswordClear;
     @Bind(R.id.login_et_password)
     EditText mLoginEtPassword;
     @Bind(R.id.tv_forget_password)
@@ -157,28 +153,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     }
 
 
-    @OnClick({R.id.iv_password_state, R.id.iv_password_clear, R.id.tv_forget_password, R.id.tv_login, R.id.tv_register, R.id.iv_wx_login, R.id.iv_qq_login, R.id.iv_sina_login})
+    @OnClick({R.id.tv_forget_password, R.id.tv_login, R.id.tv_register, R.id.iv_wx_login, R.id.iv_qq_login, R.id.iv_sina_login})
     public void onClick(View view) {
         Intent intent = null;
         switch (view.getId()) {
-            case R.id.iv_password_state:
-                if (isShowPwd) {
-                    mIvPasswordState.setImageResource(R.drawable.ic_eye_close);
-                    mLoginEtPassword.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD | InputType.TYPE_CLASS_TEXT);//设置密码不可见，如果只设置TYPE_TEXT_VARIATION_PASSWORD则无效
-
-                    mLoginEtPassword.setSelection(mLoginEtPassword.getText().toString().length());
-                    isShowPwd = false;
-                } else {
-                    mIvPasswordState.setImageResource(R.drawable.ic_eye_close);
-                    mLoginEtPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);//设置密码可见
-
-                    mLoginEtPassword.setSelection(mLoginEtPassword.getText().toString().length());
-                    isShowPwd = true;
-                }
-                break;
-            case R.id.iv_password_clear:
-                mLoginEtPassword.setText("");
-                break;
             case R.id.tv_forget_password://忘记密码
                 intent = new Intent(this, ForgetPwdActivity.class);
                 intent.putExtra("pwdType", "login");

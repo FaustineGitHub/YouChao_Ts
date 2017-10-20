@@ -7,6 +7,7 @@ import java.util.ArrayList;
  */
 
 public class CommonNews {
+    private int id;//该条数据的id
     private String title;
     private String source;
     private String time;
@@ -17,6 +18,15 @@ public class CommonNews {
     private String zhuanfa;
     private String pinglun;
     private String dianzan;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     /**
      * 记录是否点赞了
      */
@@ -56,7 +66,8 @@ public class CommonNews {
         this.type = type;
     }
 
-    public CommonNews(String title, String source, String time, String url, ArrayList<String> imgUrls, int type, String userIcon, String zhuanfa, String pinglun, String dianzan, boolean isZan,boolean isGuanZhu) {
+    public CommonNews(int id, String title, String source, String time, String url, ArrayList<String> imgUrls, int type, String userIcon, String zhuanfa, String pinglun, String dianzan, boolean isZan, boolean isGuanZhu) {
+        this.id = id;
         this.title = title;
         this.source = source;
         this.time = time;

@@ -29,4 +29,7 @@
     <string name="tab_item_home">首页</string>
     <string name="tab_item_category"></string>
     <string name="tab_item_down">圈子</string>
+
+    <string name="desc_shrinkup">收起</string>
+    <string name="desc_spread">显示更多</string>
 </resources>

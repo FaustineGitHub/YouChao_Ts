@@ -99,11 +99,13 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                     mAccount = mRegisterEtAccount.getText().toString().trim();
                     mPassword = MD5Util.Md5(mRegisterEtPassword.getText().toString().trim());
                     mZxing = mEtYzm.getText().toString().trim();
+                    //setSnackBar_green("注册成功");
                     Intent intent = new Intent(this, LoginActivity.class);
                     //intent.putExtra("pwdType", "login");
                     startActivity(intent);
                     //requestHandleArrayList.add(requestAction.shopLogin(LoginActivity.this, mAccount, mPassword));
-                    MToast.showToast(this, "注册成功");
+                    //MToast.showToast(this, "注册成功");
+
                 }
 
                 break;
@@ -113,16 +115,16 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private boolean login_verification() {
 
         if (TextUtils.isEmpty(mRegisterEtAccount.getText().toString())) {
-            setSnackBar("手机号有误");
+            setSnackBar_red("手机号有误");
             return false;
         } else if (TextUtils.isEmpty(mRegisterEtPassword.getText().toString())) {
-            setSnackBar("密码有误");
+            setSnackBar_red("密码有误");
             return false;
         } else if (mRegisterEtPassword.getText().length() < 6) {
-            setSnackBar("密码有误");
+            setSnackBar_red("密码有误");
             return false;
         }else if (TextUtils.isEmpty(mEtYzm.getText().toString())) {
-            setSnackBar("验证码有误");
+            setSnackBar_red("验证码有误");
             return false;
         }
         else {
@@ -130,20 +132,39 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         }
     }
     //设置顶部提示框
-    private void setSnackBar(String content) {
+    private void setSnackBar_red(String content) {
         final ViewGroup viewGroup = (ViewGroup) findViewById(R.id.snackbar_container).getRootView();
         int height = ScreenUtil.getStatusHeight(mContext);//状态栏的高度
-        snackBar = TSnackbar.make(viewGroup, content, TSnackbar.LENGTH_INDEFINITE, APP_DOWn);
-        snackBar.addIcon(R.mipmap.ic_launcher,100,100);
-        snackBar.setAction("取消", new View.OnClickListener() {
+        snackBar = TSnackbar.make(viewGroup, content, TSnackbar.LENGTH_SHORT, APP_DOWn);
+        snackBar.addIcon(R.drawable.shibai,100,100);
+        /*snackBar.setAction("取消", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
-        });
+        });*/
         //设置背景颜色
         View mView = snackBar.getView();
-        mView.setBackgroundColor(Color.BLUE);
+        mView.setBackgroundColor(Color.parseColor("#FF4354"));
+        //设置Snackbar的高度
+        snackBar.setMinHeight(0,height);
+        snackBar.show();
+    }
+    //设置顶部提示框
+    private void setSnackBar_green(String content) {
+        final ViewGroup viewGroup = (ViewGroup) findViewById(R.id.snackbar_container).getRootView();
+        int height = ScreenUtil.getStatusHeight(mContext);//状态栏的高度
+        snackBar = TSnackbar.make(viewGroup, content, TSnackbar.LENGTH_SHORT, APP_DOWn);
+        snackBar.addIcon(R.drawable.chenggong,100,100);
+        /*snackBar.setAction("取消", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });*/
+        //设置背景颜色
+        View mView = snackBar.getView();
+        mView.setBackgroundColor(Color.parseColor("#71D43C"));
         //设置Snackbar的高度
         snackBar.setMinHeight(0,height);
         snackBar.show();

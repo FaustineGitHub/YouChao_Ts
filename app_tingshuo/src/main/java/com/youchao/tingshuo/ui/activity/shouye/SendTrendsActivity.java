@@ -7,6 +7,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -67,6 +69,8 @@ public class SendTrendsActivity extends BaseActivity implements View.OnClickList
     ImageView mIvFabuPengyouquan;
     @Bind(R.id.iv_fabu_weibo)
     ImageView mIvFabuWeibo;
+    @Bind(R.id.tv_edit_number)
+    TextView mTvEditNumber;
     private List<LocalMedia> selectList = new ArrayList<>();
     private SendTrendsAdapter adapter;
     private int maxSelectNum = 9;
@@ -87,6 +91,7 @@ public class SendTrendsActivity extends BaseActivity implements View.OnClickList
     protected void initComponent() {
         mTvToptitleTitle.setText("发布动态");
         mTvToptitleRight.setText("发布");
+        setTextWatcher();
     }
 
     @Override
@@ -150,6 +155,31 @@ public class SendTrendsActivity extends BaseActivity implements View.OnClickList
         });
 
     }
+    //监控输入框长度
+    private void setTextWatcher() {
+        mContentEt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (mContentEt.getText().toString().trim().length() > 0 && s.length() > 0) {
+                    mTvEditNumber.setText(mContentEt.getText().toString().length() + "/300");
+                }else {
+                    mTvEditNumber.setText("0/300");
+                }
+
+            }
+        });
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -185,7 +215,7 @@ public class SendTrendsActivity extends BaseActivity implements View.OnClickList
         super.onResume();
     }
 
-    @OnClick({R.id.iv_toptitle_back, R.id.tv_toptitle_right, R.id.rl_address_xianshi,R.id.iv_fabu_qq_zone, R.id.iv_fabu_pengyouquan, R.id.iv_fabu_weibo})
+    @OnClick({R.id.iv_toptitle_back, R.id.tv_toptitle_right, R.id.rl_address_xianshi, R.id.iv_fabu_qq_zone, R.id.iv_fabu_pengyouquan, R.id.iv_fabu_weibo})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_toptitle_back:
@@ -214,28 +244,28 @@ public class SendTrendsActivity extends BaseActivity implements View.OnClickList
                 }
                 break;
             case R.id.iv_fabu_qq_zone:
-                if (isFaBuQQZone){
+                if (isFaBuQQZone) {
                     mIvFabuQqZone.setImageResource(R.drawable.qq_zone);
                     isFaBuQQZone = false;
-                }else {
+                } else {
                     mIvFabuQqZone.setImageResource(R.drawable.qq_zone_gray);
                     isFaBuQQZone = true;
                 }
                 break;
             case R.id.iv_fabu_pengyouquan:
-                if (isFaBuPengyouquan){
+                if (isFaBuPengyouquan) {
                     mIvFabuPengyouquan.setImageResource(R.drawable.pengyouquan);
                     isFaBuPengyouquan = false;
-                }else {
+                } else {
                     mIvFabuPengyouquan.setImageResource(R.drawable.pengyouquan_gray);
                     isFaBuPengyouquan = true;
                 }
                 break;
             case R.id.iv_fabu_weibo:
-                if (isFaBuWeibo){
+                if (isFaBuWeibo) {
                     mIvFabuWeibo.setImageResource(R.drawable.icn_weibo);
                     isFaBuWeibo = false;
-                }else {
+                } else {
                     mIvFabuWeibo.setImageResource(R.drawable.icn_weibo_gray);
                     isFaBuWeibo = true;
                 }

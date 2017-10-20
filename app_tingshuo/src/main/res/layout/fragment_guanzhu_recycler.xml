@@ -18,7 +18,7 @@
                 style="@style/match_view"
                 />
         </com.bartoszlipinski.recyclerviewheader.RecyclerViewHeader>
-        <android.support.v4.widget.SwipeRefreshLayout
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/swipe_layout_shouye"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
             </android.support.v7.widget.RecyclerView>
-        </android.support.v4.widget.SwipeRefreshLayout>
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
         <!--
 
             <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView

@@ -3,7 +3,7 @@
     android:id="@+id/toptitle_rl"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="@color/colorPrimary"
     android:fitsSystemWindows="true"
     android:gravity="center"
     android:orientation="vertical">
@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:padding="30px"
-            android:src="@mipmap/fanhuiicon" />
+            android:src="@drawable/back_left_white" />
 
         <TextView
             android:id="@+id/tv_toptitle_title"
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="标题"
-            android:textColor="@color/black_555"
+            android:textColor="@color/white"
             android:textSize="36px" />
 
         <TextView
@@ -38,7 +38,7 @@
             android:layout_marginRight="30px"
             android:gravity="center"
             android:text=" "
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/white"
             android:textSize="28px" />
 
         <ImageView
