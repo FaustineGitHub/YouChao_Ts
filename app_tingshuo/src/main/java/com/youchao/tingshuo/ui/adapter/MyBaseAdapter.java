@@ -1,5 +1,9 @@
 package com.youchao.tingshuo.ui.adapter;
 
+/**
+ * Created by dell on 2017/10/21.
+ */
+
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -9,9 +13,9 @@ import java.util.List;
 
 /**
  * RecyclerView的 基本适配器
- * 对RecyclerView添加头的封装，当然，你可以同理，继续增加添加尾的封装
  */
 public abstract class MyBaseAdapter extends RecyclerView.Adapter{
+
     /**
      * 头
      */

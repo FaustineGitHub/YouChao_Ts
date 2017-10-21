@@ -134,7 +134,7 @@ public class CircleMessage1Adapter extends MyBaseAdapter {
         }
 
         //ToDo 点赞
-        if(mList.get(position).isZan()){
+        if(mList.get(holder.getLayoutPosition()).isZan()){
             //已经点了
             viewHolder.ivDianzan.setImageResource(R.drawable.dianzan_select);
             viewHolder.tv_dianzan.setText((Integer.parseInt(mList.get(position).getDianzan())+1)+"");//点赞数
@@ -145,7 +145,7 @@ public class CircleMessage1Adapter extends MyBaseAdapter {
             viewHolder.tv_dianzan.setTextColor(Color.parseColor("#ff999999"));
         }
         //TODO 关注
-        if(mList.get(position).isGuanZhu()){
+        if(mList.get(holder.getLayoutPosition()).isGuanZhu()){
             //已经点了---灰色
             viewHolder.tv_guanzhu.setBackgroundResource(R.drawable.text_bg_stroke_gray);
             viewHolder.tv_guanzhu.setTextColor(Color.parseColor("#ff999999"));

@@ -100,12 +100,6 @@ public class CircleMessageAdapter extends MyBaseAdapter {
 
         return viewHolder;
     }
-
-    @Override
-    public int getItemViewType(int position) {
-        return super.getItemViewType(position);
-    }
-
     @Override
     public void onBindViewHolder_my(RecyclerView.ViewHolder holder, int position) {
         BaseViewHolder viewHolder = (BaseViewHolder) holder;
@@ -117,9 +111,9 @@ public class CircleMessageAdapter extends MyBaseAdapter {
         }
         commonNews = mList.get(position);
         int type = -1;
-        type = getItemViewType_my(position);//这就是关键  你写错了
-        //根据不同的数据类型,采用相应的填充数据方法
+        type = getItemViewType_my(position);
 
+        //根据不同的数据类型,采用相应的填充数据方法
         switch (type) {
             case 0://视频数据填充
                 fillDataVideo(viewHolder, commonNews, position);
@@ -140,7 +134,7 @@ public class CircleMessageAdapter extends MyBaseAdapter {
         }
 
         //ToDo 点赞
-        if(mList.get(position).isZan()){
+        if(mList.get(holder.getLayoutPosition()).isZan()){
             //已经点了
             viewHolder.ivDianzan.setImageResource(R.drawable.dianzan_select);
             viewHolder.tv_dianzan.setText((Integer.parseInt(mList.get(position).getDianzan())+1)+"");//点赞数
@@ -151,7 +145,7 @@ public class CircleMessageAdapter extends MyBaseAdapter {
             viewHolder.tv_dianzan.setTextColor(Color.parseColor("#ff999999"));
         }
         //TODO 关注
-        if(mList.get(position).isGuanZhu()){
+        if(mList.get(holder.getLayoutPosition()).isGuanZhu()){
             //已经点了---灰色
             viewHolder.tv_guanzhu.setBackgroundResource(R.drawable.text_bg_stroke_gray);
             viewHolder.tv_guanzhu.setTextColor(Color.parseColor("#ff999999"));
