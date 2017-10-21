@@ -28,6 +28,7 @@ import com.youchao.tingshuo.R;
 import com.youchao.tingshuo.bean.CommonNews;
 import com.youchao.tingshuo.ui.activity.mine.PersonalIntroduceActivity;
 import com.youchao.tingshuo.ui.activity.shouye.PingLunDongTaiActivity;
+import com.youchao.tingshuo.ui.activity.shouye.TuiJianActivity;
 import com.youchao.tingshuo.ui.adapter.shouye.CircleMessage1Adapter;
 import com.youchao.tingshuo.ui.adapter.shouye.GalleryAdapter;
 import com.youchao.tingshuo.ui.base.BaseFragment;
@@ -51,20 +52,17 @@ import butterknife.OnClick;
 
 public class GuanZhuFragment extends BaseFragment implements View.OnClickListener {
     public static final String TAG = GuanZhuFragment.class.getSimpleName();
-    @Bind(R.id.id_recyclerview_tuijian)
-    RecyclerView mIdRecyclerviewTuijian;
-    @Bind(R.id.iv_tuijian)
-    ImageView mIvTuijian;
-    @Bind(R.id.rl_shouye_tuijian)
-    RelativeLayout mRlShouyeTuijian;
+//    @Bind(R.id.id_recyclerview_tuijian)
+//    RecyclerView mIdRecyclerviewTuijian;
+//    @Bind(R.id.iv_tuijian)
+//    ImageView mIvTuijian;
+//    @Bind(R.id.rl_shouye_tuijian)
+//    RelativeLayout mRlShouyeTuijian;
     @Bind(R.id.recycler_view_shouye)
     RecyclerView mRecyclerViewShouye;
-    @Bind(R.id.header)
-    RecyclerViewHeader mHeader;
     @Bind(R.id.swipe_layout_shouye)
     SmartRefreshLayout mSmartRefreshLayout;
-    @Bind(R.id.tv_tuijian_type)
-    TextView mTvTuijianType;
+
 
     private GalleryAdapter mAdapter;
     private List<Integer> mDatas;
@@ -99,43 +97,43 @@ public class GuanZhuFragment extends BaseFragment implements View.OnClickListene
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initIcon();
         initData();
     }
 
-    private void initIcon() {
-        mTvTuijianType.setText("同城推荐");
+
+
+    private void initData() {
+        mockData();
         mDatas = new ArrayList<>(Arrays.asList(R.drawable.user_icon,
                 R.drawable.user_icon, R.drawable.user_icon));
+        mCircleMessageAdapter = new CircleMessage1Adapter(getActivity(), list, tag);
+        //添加头部
+        View headerView = View.inflate(getActivity(), R.layout.item_recycler_header, null);
+        TextView textView = headerView.findViewById(R.id.tv_tuijian_type);
+        RecyclerView mIdRecyclerviewTuijian = headerView.findViewById(R.id.id_recyclerview_tuijian);
         //设置布局管理器
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         mIdRecyclerviewTuijian.setLayoutManager(linearLayoutManager);
+
         //设置适配器
         mAdapter = new GalleryAdapter(getActivity(), mDatas);
         mIdRecyclerviewTuijian.setAdapter(mAdapter);
-
-    }
-
-    private void initData() {
-        initSwipeMenuRecyclerView();
-        mockData();
-        processData();
-    }
-
-    private void initSwipeMenuRecyclerView() {
+        textView.setText("同城推荐");
+        mCircleMessageAdapter.addHeaderView(headerView);//添加头
 
         mRecyclerViewShouye.setLayoutManager(new LinearLayoutManager(getActivity()));// 布局管理器。
         mRecyclerViewShouye.setHasFixedSize(true);// 如果Item够简单，高度是确定的，打开FixSize将提高性能。
         mRecyclerViewShouye.setItemAnimator(new DefaultItemAnimator());// 设置Item默认动画，加也行，不加也行。
         mRecyclerViewShouye.addItemDecoration(new ListViewDecoration30(mContext));// 添加分割线。
-        //RecyclerViewHeader必须在RecyclerView设置了LayoutManager之后调用
-        //如果你打算在RecyclerView中使用setOnScrollListener(...)方法，确保在setOnScrollListener(...)的attachTo(...)方法之前使用。
-        mHeader.attachTo(mRecyclerViewShouye, true);
 
-        // 添加滚动监听。
-        //mRecyclerViewShouye.addOnScrollListener(mOnScrollListener);
+        mRecyclerViewShouye.setAdapter(mCircleMessageAdapter);
+        //设置适配器的监听
+        setAdapterListener(mCircleMessageAdapter);
+        getData_jiaoyi();
     }
+
+
 
     private void mockData() {
         imgUrls1 = new ArrayList<>();
@@ -166,13 +164,7 @@ public class GuanZhuFragment extends BaseFragment implements View.OnClickListene
         list.add(new CommonNews(8,"春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "", imgUrls1, 0, "", "", "", "45", false, false));
     }
 
-    private void processData() {
-        mCircleMessageAdapter = new CircleMessage1Adapter(getActivity(), list, tag);
-        mRecyclerViewShouye.setAdapter(mCircleMessageAdapter);
-        //设置适配器的监听
-        setAdapterListener(mCircleMessageAdapter);
-        getData_jiaoyi();
-    }
+
 
     private void getData_jiaoyi() {
         new Handler().postDelayed(new Runnable() {
@@ -292,10 +284,6 @@ public class GuanZhuFragment extends BaseFragment implements View.OnClickListene
     }
 
 
-    @OnClick(R.id.rl_shouye_tuijian)
-    public void onClick(View view) {
-    }
-
     /**
      * 加载更多
      */
@@ -319,4 +307,9 @@ public class GuanZhuFragment extends BaseFragment implements View.OnClickListene
             }
         }
     };
+
+    @Override
+    public void onClick(View view) {
+
+    }
 }

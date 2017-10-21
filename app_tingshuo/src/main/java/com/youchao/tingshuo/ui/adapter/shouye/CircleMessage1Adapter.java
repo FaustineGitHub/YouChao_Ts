@@ -17,6 +17,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.youchao.tingshuo.R;
 import com.youchao.tingshuo.bean.CommonNews;
 import com.youchao.tingshuo.ui.activity.shouye.ImagePagerActivity;
+import com.youchao.tingshuo.ui.adapter.MyBaseAdapter;
 import com.youchao.tingshuo.utils.ImageLoaderUtil;
 import com.youchao.tingshuo.utils.L;
 import com.youchao.tingshuo.view.NoScrollGridView;
@@ -32,7 +33,7 @@ import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
  * 圈子页面的adapter
  */
 
-public class CircleMessage1Adapter extends RecyclerView.Adapter<CircleMessage1Adapter.BaseViewHolder> {
+public class CircleMessage1Adapter extends MyBaseAdapter {
     private List<CommonNews> mList;
     private CommonNews commonNews;
     private Context mContext;
@@ -59,9 +60,8 @@ public class CircleMessage1Adapter extends RecyclerView.Adapter<CircleMessage1Ad
         this.mList.addAll(dataList);
         notifyDataSetChanged();
     }
-
     @Override
-    public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder_my(ViewGroup parent, int viewType) {
         View itemView = null;
         BaseViewHolder viewHolder = null;
         switch (viewType) {
@@ -98,9 +98,12 @@ public class CircleMessage1Adapter extends RecyclerView.Adapter<CircleMessage1Ad
         return viewHolder;
     }
 
+
+
     @Override
-    public void onBindViewHolder(final BaseViewHolder holder, int position) {
-        holder.tv_guanzhu.setVisibility(View.GONE);
+    public void onBindViewHolder_my(RecyclerView.ViewHolder holder, int position) {
+        BaseViewHolder viewHolder = (BaseViewHolder) holder;
+        viewHolder.tv_guanzhu.setVisibility(View.GONE);
         /*L.e("TAG",tag);
         if ("HotFragment".equals(tag)){
             holder.tv_guanzhu.setVisibility(View.VISIBLE);
@@ -109,53 +112,53 @@ public class CircleMessage1Adapter extends RecyclerView.Adapter<CircleMessage1Ad
         }*/
         commonNews = mList.get(position);
         int type = -1;
-        type = getItemViewType(position);
+        type = getItemViewType_my(position);
         //根据不同的数据类型,采用相应的填充数据方法    这四套布局  都有点赞吧？是的
 
         switch (type) {
             case 0://视频数据填充
-                fillDataVideo(holder, commonNews, position);
+                fillDataVideo(viewHolder, commonNews, position);
                 break;
             case 10://纯文本填充
-                fillDataNoImage(holder, commonNews,position);
+                fillDataNoImage(viewHolder, commonNews,position);
                 break;
             case 1://一张图片填充
-                fillDataSingleImage(holder, commonNews,position);
+                fillDataSingleImage(viewHolder, commonNews,position);
                 break;
             case 4://四张图片填充
-                fillDataFourImage(holder, commonNews,position);
+                fillDataFourImage(viewHolder, commonNews,position);
                 break;
             default://多张图片填充
-                fillDataManyImage(holder, commonNews,position);
+                fillDataManyImage(viewHolder, commonNews,position);
                 break;
         }
 
         //ToDo 点赞
         if(mList.get(position).isZan()){
             //已经点了
-            holder.ivDianzan.setImageResource(R.drawable.dianzan_select);
-            holder.tv_dianzan.setText((Integer.parseInt(mList.get(position).getDianzan())+1)+"");//点赞数
-            holder.tv_dianzan.setTextColor(Color.parseColor("#00D1CA"));
+            viewHolder.ivDianzan.setImageResource(R.drawable.dianzan_select);
+            viewHolder.tv_dianzan.setText((Integer.parseInt(mList.get(position).getDianzan())+1)+"");//点赞数
+            viewHolder.tv_dianzan.setTextColor(Color.parseColor("#00D1CA"));
         }else{
-            holder.ivDianzan.setImageResource(R.drawable.dianzan);
-            holder.tv_dianzan.setText(mList.get(position).getDianzan());
-            holder.tv_dianzan.setTextColor(Color.parseColor("#ff999999"));
+            viewHolder.ivDianzan.setImageResource(R.drawable.dianzan);
+            viewHolder.tv_dianzan.setText(mList.get(position).getDianzan());
+            viewHolder.tv_dianzan.setTextColor(Color.parseColor("#ff999999"));
         }
         //TODO 关注
         if(mList.get(position).isGuanZhu()){
             //已经点了---灰色
-            holder.tv_guanzhu.setBackgroundResource(R.drawable.text_bg_stroke_gray);
-            holder.tv_guanzhu.setTextColor(Color.parseColor("#ff999999"));
-            holder.tv_guanzhu.setText("已关注");
+            viewHolder.tv_guanzhu.setBackgroundResource(R.drawable.text_bg_stroke_gray);
+            viewHolder.tv_guanzhu.setTextColor(Color.parseColor("#ff999999"));
+            viewHolder.tv_guanzhu.setText("已关注");
         }else{
-            holder.tv_guanzhu.setBackgroundResource(R.drawable.text_bg_stroke_blue);
-            holder.tv_guanzhu.setTextColor(Color.parseColor("#00D1CA"));
-            holder.tv_guanzhu.setText("+关注");
+            viewHolder.tv_guanzhu.setBackgroundResource(R.drawable.text_bg_stroke_blue);
+            viewHolder.tv_guanzhu.setTextColor(Color.parseColor("#00D1CA"));
+            viewHolder.tv_guanzhu.setText("+关注");
         }
 
-        holder.setData(mList.get(position).getImgUrls());
+        viewHolder.setData(mList.get(position).getImgUrls());
         //通过接口回调设置点击事件
-        initListener(holder);
+        initListener(viewHolder);
     }
 
     private void initListener(final BaseViewHolder holder) {
@@ -331,9 +334,8 @@ public class CircleMessage1Adapter extends RecyclerView.Adapter<CircleMessage1Ad
     public int getItemCount() {
         return mList.size();
     }
-
     @Override
-    public int getItemViewType(int position) {
+    public int getItemViewType_my(int position) {
         //避免空指针,解析的json对象为新闻对象时,图片数组为空
         if (mList.get(position).getImgUrls() == null || mList.get(position).getImgUrls().size() == 0) {//这里是判断有没有图片
             //0代表视频新闻或者纯文本新闻
@@ -351,6 +353,14 @@ public class CircleMessage1Adapter extends RecyclerView.Adapter<CircleMessage1Ad
         //图片数组的长度代表布局类型
         return mList.get(position).getImgUrls().size();
     }
+    @Override
+    public List getData() {
+        return mList;
+    }
+
+
+
+
     /**
      * 四张图片显示的viewholder
      */

@@ -55,12 +55,14 @@ public class ModifyIndividualitySignature extends BaseActivity implements View.O
     protected void initComponent() {
 
 
+
     }
 
     @Override
     protected void initData() {
         String tag = getIntent().getStringExtra("TAG");
         mTvToptitleRight.setText("确定");
+        mTvNewNumber.setText("0/100");
         setTextWatcher();
         //mEtNew.addTextChangedListener(new MaxLengthWatcher(100, mEtNew));//签名最多100位
         if ("UpadateIndividualitySignature".equals(tag)) {//修改个性签名
@@ -93,7 +95,7 @@ public class ModifyIndividualitySignature extends BaseActivity implements View.O
             @Override
             public void afterTextChanged(Editable s) {
                 if (mEtNew.getText().toString().trim().length() >= 0 && s.length() > 0) {
-                    mTvNewNumber.setText(mEtNew.getText().toString().length() + "/100");
+                    mTvNewNumber.setText((mEtNew.getText().toString().length()-1) + "/100");
                 }
 
             }
@@ -124,6 +126,7 @@ public class ModifyIndividualitySignature extends BaseActivity implements View.O
                 break;
             case R.id.iv_delete:
                 mEtNew.setText("");
+                mTvNewNumber.setText("0/100");
                 MToast.showToast(this, "删除成功");
                 break;
         }

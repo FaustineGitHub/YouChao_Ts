@@ -8,7 +8,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_fans_list"
         android:background="@color/white"
-        android:layout_marginTop="16px"
+        android:layout_marginTop="24px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

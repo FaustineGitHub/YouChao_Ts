@@ -5,27 +5,19 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
-import com.bartoszlipinski.recyclerviewheader.RecyclerViewHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.youchao.tingshuo.R;
 import com.youchao.tingshuo.bean.CommonNews;
-import com.youchao.tingshuo.ui.activity.mine.PersonalIntroduceActivity;
 import com.youchao.tingshuo.ui.activity.shouye.PingLunDongTaiActivity;
 import com.youchao.tingshuo.ui.adapter.shouye.CircleMessageAdapter;
 import com.youchao.tingshuo.ui.adapter.shouye.GalleryAdapter;
@@ -34,16 +26,13 @@ import com.youchao.tingshuo.ui.widget.dialog.ShareDialog;
 import com.youchao.tingshuo.utils.L;
 import com.youchao.tingshuo.utils.MToast;
 import com.youchao.tingshuo.view.FullyLinearLayoutManager;
-import com.youchao.tingshuo.view.ListViewDecoration1;
 import com.youchao.tingshuo.view.ListViewDecoration30;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * Created by dell on 2017/9/12.
@@ -51,16 +40,16 @@ import butterknife.OnClick;
 
 public class DongTaiFragment extends BaseFragment implements View.OnClickListener {
     public static final String TAG = DongTaiFragment.class.getSimpleName();
-    @Bind(R.id.id_recyclerview_tuijian)
+   /* @Bind(R.id.id_recyclerview_tuijian)
     RecyclerView mIdRecyclerviewTuijian;
     @Bind(R.id.iv_tuijian)
     ImageView mIvTuijian;
     @Bind(R.id.rl_shouye_tuijian)
-    RelativeLayout mRlShouyeTuijian;
+    RelativeLayout mRlShouyeTuijian;*/
     @Bind(R.id.recycler_view_shouye)
     RecyclerView mRecyclerViewShouye;
-    @Bind(R.id.header)
-    RecyclerViewHeader mHeader;
+    /*@Bind(R.id.header)
+    RecyclerViewHeader mHeader;*/
     /*@Bind(R.id.recycler_view_shouye)
     SwipeMenuRecyclerView mRecyclerViewShouye;*/
     @Bind(R.id.swipe_layout_shouye)
@@ -104,7 +93,6 @@ public class DongTaiFragment extends BaseFragment implements View.OnClickListene
     }
 
     private void initData() {
-        mHeader.setVisibility(View.GONE);
         initSwipeMenuRecyclerView();
         mockData();
         processData();
@@ -270,9 +258,7 @@ public class DongTaiFragment extends BaseFragment implements View.OnClickListene
     }
 
 
-    @OnClick(R.id.rl_shouye_tuijian)
-    public void onClick(View view) {
-    }
+
 
     /**
      * 加载更多
@@ -300,4 +286,9 @@ public class DongTaiFragment extends BaseFragment implements View.OnClickListene
             }
         }
     };
+
+    @Override
+    public void onClick(View view) {
+
+    }
 }

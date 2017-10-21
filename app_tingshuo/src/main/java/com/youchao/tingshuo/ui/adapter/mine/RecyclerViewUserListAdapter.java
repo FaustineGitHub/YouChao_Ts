@@ -97,7 +97,7 @@ public class RecyclerViewUserListAdapter extends RecyclerView.Adapter<RecyclerVi
             }
             tv_fans_name.setText(commonNews.getName());
             tv_fans_jieshao.setText(commonNews.getJieshao());
-            ImageLoader.getInstance().displayImage( commonNews.getImg(),iv_fans_list, ImageLoaderUtil.getDefaultOption());
+            ImageLoader.getInstance().displayImage( commonNews.getImg(),iv_fans_list, ImageLoaderUtil.getCircleBitmapOption(Color.parseColor("#ffffff"),1));
         }
 
 

@@ -2,9 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:background="@color/white"
               android:layout_width="match_parent"
-              android:layout_height="160px">
+              android:layout_height="wrap_content">
     <ImageView
-        android:id="@+id/iv_fans_list"
+        android:id="@+id/iv_tuijian_list"
         android:layout_width="88px"
         android:layout_height="88px"
         android:layout_marginTop="38px"
@@ -12,17 +12,17 @@
         android:layout_marginLeft="24px"
         android:src="@drawable/user_icon"/>
     <TextView
-        android:id="@+id/tv_fans_name"
+        android:id="@+id/tv_tuijian_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="YYQY"
         android:textColor="@color/colorPrimary"
         android:textSize="30px"
-        android:layout_marginTop="40px"
+        android:layout_marginTop="30px"
         android:layout_marginLeft="24px"
-        android:layout_toRightOf="@id/iv_fans_list"/>
+        android:layout_toRightOf="@id/iv_tuijian_list"/>
     <TextView
-        android:id="@+id/tv_fans_jieshao"
+        android:id="@+id/tv_tuijian_jieshao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="2017-03-23 12:32"
@@ -33,10 +33,36 @@
         android:maxWidth="300px"
         android:layout_marginTop="16px"
         android:layout_marginLeft="24px"
-        android:layout_below="@id/tv_fans_name"
-        android:layout_toRightOf="@id/iv_fans_list"/>
+        android:layout_below="@id/tv_tuijian_name"
+        android:layout_toRightOf="@id/iv_tuijian_list"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16px"
+        android:layout_marginLeft="24px"
+        android:layout_marginBottom="30px"
+        android:layout_below="@id/tv_tuijian_jieshao"
+        android:layout_toRightOf="@id/iv_tuijian_list">
+        <TextView
+            android:id="@+id/tv_tuijian_guanzhu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray_d7"
+            android:textSize="22px"
+            android:text="关注 198"/>
+        <TextView
+            android:id="@+id/tv_tuijian_fans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50px"
+            android:textSize="22px"
+            android:textColor="@color/gray_d7"
+            android:text="粉丝 896"/>
+
+    </LinearLayout>
     <RelativeLayout
-        android:id="@+id/rl_fans_type"
+        android:id="@+id/rl_tuijian_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
@@ -45,9 +71,10 @@
         android:paddingRight="10px"
         android:paddingTop="5px"
         android:paddingBottom="5px"
+        android:background="@drawable/text_bg_stroke_blue"
         android:layout_alignParentRight="true">
         <ImageView
-            android:id="@+id/iv_fans_type"
+            android:id="@+id/iv_tuijian_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -55,20 +82,14 @@
             android:visibility="gone"
             android:src="@drawable/huxiang_icon"/>
         <TextView
-            android:id="@+id/tv_fans_type"
+            android:id="@+id/tv_tuijian_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="+关注"
-            android:layout_toRightOf="@id/iv_fans_type"
+            android:layout_toRightOf="@id/iv_tuijian_type"
             android:textColor="@color/colorTabSelected"
             android:textSize="36px"
             />
 
     </RelativeLayout>
-
-    <View
-        android:layout_below="@+id/iv_fans_list"
-        style="@style/match_view"
-        />
-
 </RelativeLayout>

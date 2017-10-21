@@ -11,16 +11,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bartoszlipinski.recyclerviewheader.RecyclerViewHeader;
-import com.scwang.smartrefresh.header.MaterialHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
-import com.scwang.smartrefresh.layout.footer.BallPulseFooter;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.youchao.tingshuo.R;
@@ -41,7 +35,6 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * Created by dell on 2017/9/12.
@@ -49,19 +42,19 @@ import butterknife.OnClick;
 
 public class HotFragment extends BaseFragment implements View.OnClickListener {
     public static final String TAG = HotFragment.class.getSimpleName();
-    @Bind(R.id.id_recyclerview_tuijian)
+    /*@Bind(R.id.id_recyclerview_tuijian)
     RecyclerView mIdRecyclerviewTuijian;
     @Bind(R.id.iv_tuijian)
     ImageView mIvTuijian;
     @Bind(R.id.rl_shouye_tuijian)
-    RelativeLayout mRlShouyeTuijian;
+    RelativeLayout mRlShouyeTuijian;*/
     @Bind(R.id.recycler_view_shouye)
     RecyclerView mRecyclerViewShouye;
-    @Bind(R.id.header)
-    RecyclerViewHeader mHeader;
+   /* @Bind(R.id.header)
+    RecyclerViewHeader mHeader;*/
 
-    @Bind(R.id.tv_tuijian_type)
-    TextView mTvTuijianType;
+    /*@Bind(R.id.tv_tuijian_type)
+    TextView mTvTuijianType;*/
     @Bind(R.id.swipe_layout_shouye)
     SmartRefreshLayout mSmartRefreshLayout;
 
@@ -98,14 +91,19 @@ public class HotFragment extends BaseFragment implements View.OnClickListener {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initIcon();
         initData();
     }
 
-    private void initIcon() {
-        mTvTuijianType.setText("耳朵推荐");
+
+    private void initData() {
+        mockData();
         mDatas = new ArrayList<>(Arrays.asList(R.drawable.user_icon,
                 R.drawable.user_icon, R.drawable.user_icon));
+        mCircleMessageAdapter = new CircleMessageAdapter(getActivity(), list, tag);
+        //添加头部
+        View headerView = View.inflate(getActivity(), R.layout.item_recycler_header, null);
+        TextView textView = headerView.findViewById(R.id.tv_tuijian_type);
+        RecyclerView mIdRecyclerviewTuijian = headerView.findViewById(R.id.id_recyclerview_tuijian);
         //设置布局管理器
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -114,37 +112,20 @@ public class HotFragment extends BaseFragment implements View.OnClickListener {
         //设置适配器
         mAdapter = new GalleryAdapter(getActivity(), mDatas);
         mIdRecyclerviewTuijian.setAdapter(mAdapter);
-
-    }
-
-    private void initData() {
-        initSwipeMenuRecyclerView();
-
-        mockData();
-        processData();
-
-    }
-
-    private void initSwipeMenuRecyclerView() {
-        /*mRecyclerViewShouye.setLayoutManager(new LinearLayoutManager(getActivity()){
-            @Override
-            public boolean canScrollVertically() {
-                return false;//防止滑动卡  你刚滑动 不卡？没感觉
-            }
-        });*/
+        textView.setText("耳朵推荐");
+        mCircleMessageAdapter.addHeaderView(headerView);//添加头
 
         mRecyclerViewShouye.setLayoutManager(new LinearLayoutManager(getActivity()));// 布局管理器。
         mRecyclerViewShouye.setHasFixedSize(true);// 如果Item够简单，高度是确定的，打开FixSize将提高性能。
         mRecyclerViewShouye.setItemAnimator(new DefaultItemAnimator());// 设置Item默认动画，加也行，不加也行。
         mRecyclerViewShouye.addItemDecoration(new ListViewDecoration30(mContext));// 添加分割线。
-        //RecyclerViewHeader必须在RecyclerView设置了LayoutManager之后调用
-        //如果你打算在RecyclerView中使用setOnScrollListener(...)方法，确保在setOnScrollListener(...)的attachTo(...)方法之前使用。
-        mHeader.attachTo(mRecyclerViewShouye, true);
 
-        // 添加滚动监听。
-        //mRecyclerViewShouye.addOnScrollListener(mOnScrollListener);
+        mRecyclerViewShouye.setAdapter(mCircleMessageAdapter);
+        //设置适配器的监听
+        setAdapterListener(mCircleMessageAdapter);
+        getData_jiaoyi();
+
     }
-
     private void mockData() {
         imgUrls1 = new ArrayList<>();
         imgUrls2 = new ArrayList<>();
@@ -164,24 +145,18 @@ public class HotFragment extends BaseFragment implements View.OnClickListener {
         imgUrls4.add("http://attachments.gfan.com/forum/201504/07/095447evh9cigggne1celv.jpg");
         imgUrls4.add("http://img.sucai.redocn.com/attachments/images/201207/20120707/Redocn_2012070709495130.jpg");
         //String title, String source, String time, String url, String[] imgs, String cover, String userIcon, String zhuanfa, String pinglun, String dianzan//
-        list.add(new CommonNews(0,"春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "", imgUrls4, 0, "", "", "", "45", false, false));
-        list.add(new CommonNews(1,"春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "", imgUrls1, 0, "", "", "", "32", false, false));
-        list.add(new CommonNews(2,"春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "http://gslb.miaopai.com/stream/ed5HCfnhovu3tyIQAiv60Q__.mp4", imgUrls2, 1, "", "", "", "13", false, true));
-        list.add(new CommonNews(3,"春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "", imgUrls1, 0, "", "", "", "45", false, false));
-        list.add(new CommonNews(4,"春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "", imgUrls3, 1, "", "", "", "45", false, true));
-        list.add(new CommonNews(5,"春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "http://gslb.miaopai.com/stream/ed5HCfnhovu3tyIQAiv60Q__.mp4", imgUrls2, 1, "", "", "", "26", false, false));
-        list.add(new CommonNews(6,"春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "", imgUrls4, 1, "", "", "", "454", false, true));
-        list.add(new CommonNews(7,"春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "", imgUrls3, 1, "", "", "", "22", false, true));
-        list.add(new CommonNews(8,"春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "", imgUrls2, 2, "", "", "", "245", false, false));
+        list.add(new CommonNews(0, "春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "", imgUrls4, 0, "", "", "", "45", false, false));
+        list.add(new CommonNews(1, "春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "", imgUrls1, 0, "", "", "", "32", false, false));
+        list.add(new CommonNews(2, "春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "http://gslb.miaopai.com/stream/ed5HCfnhovu3tyIQAiv60Q__.mp4", imgUrls2, 1, "", "", "", "13", false, true));
+        list.add(new CommonNews(3, "春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "", imgUrls1, 0, "", "", "", "45", false, false));
+        list.add(new CommonNews(4, "春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "", imgUrls3, 1, "", "", "", "45", false, true));
+        list.add(new CommonNews(5, "春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "http://gslb.miaopai.com/stream/ed5HCfnhovu3tyIQAiv60Q__.mp4", imgUrls2, 1, "", "", "", "26", false, false));
+        list.add(new CommonNews(6, "春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "", imgUrls4, 1, "", "", "", "454", false, true));
+        list.add(new CommonNews(7, "春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "", imgUrls3, 1, "", "", "", "22", false, true));
+        list.add(new CommonNews(8, "春风十里", "vsdfsdfsadfsdaf", "2017_09_22", "", imgUrls2, 2, "", "", "", "245", false, false));
     }
 
-    private void processData() {
-        mCircleMessageAdapter = new CircleMessageAdapter(getActivity(), list, tag);
-        mRecyclerViewShouye.setAdapter(mCircleMessageAdapter);
-        //设置适配器的监听
-        setAdapterListener(mCircleMessageAdapter);
-        getData_jiaoyi();
-    }
+
 
     private void getData_jiaoyi() {
         new Handler().postDelayed(new Runnable() {
@@ -313,11 +288,6 @@ public class HotFragment extends BaseFragment implements View.OnClickListener {
         ButterKnife.unbind(this);
     }
 
-
-    @OnClick(R.id.rl_shouye_tuijian)
-    public void onClick(View view) {
-    }
-
     /**
      * 加载更多
      */
@@ -341,4 +311,10 @@ public class HotFragment extends BaseFragment implements View.OnClickListener {
             }
         }
     };
+
+
+    @Override
+    public void onClick(View view) {
+
+    }
 }

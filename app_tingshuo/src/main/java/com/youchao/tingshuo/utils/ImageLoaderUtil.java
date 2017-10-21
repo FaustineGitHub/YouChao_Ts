@@ -22,11 +22,11 @@ public class ImageLoaderUtil {
     public static DisplayImageOptions getDefaultOption() {
         DisplayImageOptions options = new DisplayImageOptions.Builder()
                 // TODO 网络图片下载完成之前的预加载图片
-                .showImageOnLoading(R.mipmap.ic_launcher)
+                .showImageOnLoading(R.drawable.zhanwei)
                 // TODO 设置图片Uri为空或是错误的时候显示的图片
-                .showImageForEmptyUri(R.mipmap.ic_launcher)
+                .showImageForEmptyUri(R.drawable.zhanwei)
                 // TODO 设置图片加载/解码过程中错误时候显示的图片
-                .showImageOnFail(R.mipmap.ic_launcher)
+                .showImageOnFail(R.drawable.zhanwei)
                 // 设置图片的解码类型
                 .bitmapConfig(Bitmap.Config.RGB_565)
                 // 设置下载的图片是否缓存在内存中
@@ -54,9 +54,9 @@ public class ImageLoaderUtil {
      */
     public static DisplayImageOptions getCircleBitmapOption(Integer strokeColor, float strokeWidth) {
         DisplayImageOptions options = new DisplayImageOptions.Builder()
-                .showImageOnLoading(R.mipmap.ic_launcher)
-                .showImageForEmptyUri(R.mipmap.ic_launcher)
-                .showImageOnFail(R.mipmap.ic_launcher)
+                .showImageOnLoading(R.drawable.zhanwei)
+                .showImageForEmptyUri(R.drawable.zhanwei)
+                .showImageOnFail(R.drawable.zhanwei)
                 .bitmapConfig(Bitmap.Config.RGB_565)
                 .cacheInMemory(true)
                 .cacheOnDisk(true)
@@ -74,9 +74,9 @@ public class ImageLoaderUtil {
      */
     public static DisplayImageOptions getRoundBitmapOption(int cornerRadiusPixels) {
         DisplayImageOptions options = new DisplayImageOptions.Builder()
-                .showImageOnLoading(R.mipmap.ic_launcher)
-                .showImageForEmptyUri(R.mipmap.ic_launcher)
-                .showImageOnFail(R.mipmap.ic_launcher)
+                .showImageOnLoading(R.drawable.zhanwei)
+                .showImageForEmptyUri(R.drawable.zhanwei)
+                .showImageOnFail(R.drawable.zhanwei)
                 .bitmapConfig(Bitmap.Config.RGB_565)
                 .cacheInMemory(true)
                 .cacheOnDisk(true)
@@ -92,9 +92,9 @@ public class ImageLoaderUtil {
      */
     public static DisplayImageOptions getFadeInBitmapOption(int durationMillis) {
         DisplayImageOptions options = new DisplayImageOptions.Builder()
-                .showImageOnLoading(R.mipmap.ic_launcher)
-                .showImageForEmptyUri(R.mipmap.ic_launcher)
-                .showImageOnFail(R.mipmap.ic_launcher)
+                .showImageOnLoading(R.drawable.zhanwei)
+                .showImageForEmptyUri(R.drawable.zhanwei)
+                .showImageOnFail(R.drawable.zhanwei)
                 .bitmapConfig(Bitmap.Config.RGB_565)
                 .cacheInMemory(true)
                 .cacheOnDisk(true)
