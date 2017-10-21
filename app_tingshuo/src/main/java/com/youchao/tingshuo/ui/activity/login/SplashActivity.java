@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.youchao.tingshuo.R;
 import com.youchao.tingshuo.ui.activity.AutoLayoutActivity;
 import com.youchao.tingshuo.ui.activity.MainActivity;
+import com.youchao.tingshuo.ui.activity.MainActivity_Bottom;
 import com.youchao.tingshuo.utils.ConstantUtlis;
 import com.youchao.tingshuo.utils.SharedPreferencesUtils;
 
@@ -87,7 +88,7 @@ public class SplashActivity extends AutoLayoutActivity {
 //                        }.
 
 
-                        Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                        Intent intent = new Intent(SplashActivity.this, MainActivity_Bottom.class);
                         startActivity(intent);
                         SharedPreferencesUtils.setBoolean(mContext, ConstantUtlis.SP_ISFROMLOGINTOMAIN, true);//从登录页进入主页
                         SplashActivity.this.finish();

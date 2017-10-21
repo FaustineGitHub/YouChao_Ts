@@ -196,4 +196,26 @@
         <item name="android:windowEnterAnimation">@anim/dialog_top_enter</item>
         <item name="android:windowExitAnimation">@anim/dialog_top_exit</item>
     </style>
+    <!--设置页面布局-->
+    <style name="setting_rl">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">96px</item>
+        <item name="android:paddingLeft">24px</item>
+        <item name="android:paddingRight">24px</item>
+        <item name="android:background">@color/white</item>
+    </style>
+    <style name="setting_text_left">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:textColor">@color/black_222</item>
+        <item name="android:textSize">28px</item>
+    </style>
+    <style name="setting_img_right">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:src">@drawable/right</item>
+        <item name="android:layout_alignParentRight">true</item>
+    </style>
 </resources>

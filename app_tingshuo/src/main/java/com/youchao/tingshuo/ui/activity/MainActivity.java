@@ -21,6 +21,7 @@ import butterknife.OnClick;
 
 /**
  * Created by dell on 2017/10/12.
+ * 普通的底部导航栏
  */
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {

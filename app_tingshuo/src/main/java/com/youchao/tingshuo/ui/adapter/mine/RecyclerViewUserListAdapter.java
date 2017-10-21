@@ -31,6 +31,7 @@ public class RecyclerViewUserListAdapter extends RecyclerView.Adapter<RecyclerVi
     private Context mContext;
 
 
+
     public RecyclerViewUserListAdapter(List<CommonUserList> list, Context context) {
         mList = list;
         mContext = context;

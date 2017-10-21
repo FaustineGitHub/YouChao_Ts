@@ -72,10 +72,10 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);// 设置全屏
+        //requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);// 设置全屏
         super.onCreate(savedInstanceState);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);//去掉信息栏
+        //this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);//去掉信息栏
         context = this;
         ButterKnife.bind(this);
     }
@@ -146,8 +146,8 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         //设置背景颜色
         View mView = snackBar.getView();
         mView.setBackgroundColor(Color.parseColor("#FF4354"));
-        //设置Snackbar的高度
-        snackBar.setMinHeight(0,height);
+        //设置Snackbar的高度---不设置高度时，默认为导航栏+height
+        //snackBar.setMinHeight(0,height);
         snackBar.show();
     }
     //设置顶部提示框

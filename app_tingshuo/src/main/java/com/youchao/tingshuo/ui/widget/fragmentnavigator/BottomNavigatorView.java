@@ -40,64 +40,49 @@ public class BottomNavigatorView extends LinearLayoutCompat {
         for (int i = 0; i < getChildCount(); i++) {
             View view = getChildAt(i);
             final int finalI = i;
-            //if (i != 1){
+            if (i != 1){
                 view.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         mOnBottomNavigatorViewItemClickListener.onBottomNavigatorViewItemClick(finalI, v);
                     }
                 });
-            //}
-
+            }
         }
     }
-
+    //换颜色
+    /*public void select(int position) {
+        for (int i = 0; i < getChildCount(); i++) {
+            View child = getChildAt(i);
+            if (i == position) {
+                selectChild(child, true);
+            } else {
+                selectChild(child, false);
+            }
+        }
+    }*/
+    //换图标
     public void select(int position) {
         for (int i = 0; i < getChildCount(); i++) {
             View child = getChildAt(i);
             if (i == position) {
                 if (position ==0){
-                    selectChild_0(child, true);
+                    selectChild_1(child, true);
                 }else if (position == 2){
                     selectChild_2(child, true);
-                }else if (position == 1){
-                    selectChild_1(child, true);
                 }
+                //selectChild(child, true);
             } else {
                 if (position ==0){
-                    selectChild_0(child, false);
+                    selectChild_1(child, false);
                 }else if (position == 2){
                     selectChild_2(child, false);
-                }else if (position == 1){
-                    selectChild_1(child, true);
                 }
+                //selectChild(child, false);
             }
         }
     }
 
-    private void selectChild_0(View child, boolean select) {
-        if (child instanceof ViewGroup) {
-            ViewGroup group = (ViewGroup) child;
-            group.setSelected(select);
-            for (int i = 0; i < group.getChildCount(); i++) {
-                selectChild_1(group.getChildAt(i), select);
-            }
-        } else {
-            child.setSelected(select);
-            if (child instanceof ImageView) {
-                ImageView iv = (ImageView) child;
-                //Drawable drawable = iv.getDrawable().mutate();
-                if (select) {
-                    iv.setImageResource(R.drawable.quanzi_select);
-                    //drawable.setColorFilter(getResources().getColor(R.color.colorTabSelected), PorterDuff.Mode.SRC_ATOP);
-                } else {
-
-                    iv.setImageResource(R.drawable.wode);
-                   // drawable.setColorFilter(getResources().getColor(R.color.colorTabNormal), PorterDuff.Mode.SRC_ATOP);
-                }
-            }
-        }
-    }
     private void selectChild_1(View child, boolean select) {
         if (child instanceof ViewGroup) {
             ViewGroup group = (ViewGroup) child;
@@ -111,7 +96,7 @@ public class BottomNavigatorView extends LinearLayoutCompat {
                 ImageView iv = (ImageView) child;
                 //Drawable drawable = iv.getDrawable().mutate();
                 if (select) {
-                    iv.setImageResource(R.drawable.quanzi);
+                    iv.setImageResource(R.drawable.quanzi_select);
                     //drawable.setColorFilter(getResources().getColor(R.color.colorTabSelected), PorterDuff.Mode.SRC_ATOP);
                 } else {
                     iv.setImageResource(R.drawable.wode);
@@ -133,10 +118,10 @@ public class BottomNavigatorView extends LinearLayoutCompat {
                 ImageView iv = (ImageView) child;
                 //Drawable drawable = iv.getDrawable().mutate();
                 if (select) {
-                    iv.setImageResource(R.drawable.quanzi);
+                    iv.setImageResource(R.drawable.wodeselect);
                     //drawable.setColorFilter(getResources().getColor(R.color.colorTabSelected), PorterDuff.Mode.SRC_ATOP);
                 } else {
-                    iv.setImageResource(R.drawable.wodeselect);
+                    iv.setImageResource(R.drawable.quanzi);
                     // drawable.setColorFilter(getResources().getColor(R.color.colorTabNormal), PorterDuff.Mode.SRC_ATOP);
                 }
             }

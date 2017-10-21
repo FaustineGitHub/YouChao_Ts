@@ -20,6 +20,7 @@ import com.youchao.tingshuo.ui.activity.mine.IdentityAuthenticationActivity;
 import com.youchao.tingshuo.ui.activity.mine.MessageListActivity;
 import com.youchao.tingshuo.ui.activity.mine.MyChatActivity;
 import com.youchao.tingshuo.ui.activity.mine.PersonalIntroduceActivity;
+import com.youchao.tingshuo.ui.activity.mine.SettingActivity;
 import com.youchao.tingshuo.ui.activity.money.PaymentConfirmationActivity;
 import com.youchao.tingshuo.ui.base.BaseFragment;
 
@@ -136,6 +137,8 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
             case R.id.my_yijian_fankui:
                 break;
             case R.id.my_setting:
+                intent = new Intent(getActivity(), SettingActivity.class);
+                startActivity(intent);
                 break;
             case R.id.my_shenfen_renzheng:
                 intent = new Intent(getActivity(), IdentityAuthenticationActivity.class);

@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.youchao.tingshuo.R;
 import com.youchao.tingshuo.ui.activity.MainActivity;
+import com.youchao.tingshuo.ui.activity.MainActivity_Bottom;
 import com.youchao.tingshuo.ui.base.BaseActivity;
 import com.youchao.tingshuo.utils.CommonInputUtils;
 import com.youchao.tingshuo.utils.MD5Util;
@@ -62,10 +63,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);// 设置全屏
+        //requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);// 设置全屏
         super.onCreate(savedInstanceState);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);//去掉信息栏
+        //this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);//去掉信息栏
         mContext = this;
     }
 
@@ -163,7 +164,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 startActivity(intent);
                 break;
             case R.id.tv_login://登陆
-                intent = new Intent(this, MainActivity.class);
+                intent = new Intent(this, MainActivity_Bottom.class);
                 //intent.putExtra("pwdType", "login");
                 startActivity(intent);
                 if (login_verification()) {

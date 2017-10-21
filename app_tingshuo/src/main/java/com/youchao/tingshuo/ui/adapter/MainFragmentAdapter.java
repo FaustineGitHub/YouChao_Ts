@@ -22,7 +22,7 @@ public class MainFragmentAdapter implements FragmentNavigatorAdapter {
             case 0:
                 return CircleFragment.newInstance(position);
             case 1:
-                return PiPeiFragment.newInstance(position);
+                return MyFragment.newInstance(position);
             case 2:
                 return MyFragment.newInstance(position);
 
@@ -37,7 +37,7 @@ public class MainFragmentAdapter implements FragmentNavigatorAdapter {
             case 0:
                 return CircleFragment.TAG;
             case 1:
-                return PiPeiFragment.TAG;
+                return MyFragment.TAG;
             case 2:
                 return MyFragment.TAG;
 

@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:text="首页"
+            android:text="圈子"
             android:textColor="@color/color_tab_text"
             android:textSize="12sp" />
     </LinearLayout>
@@ -58,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:text="圈子"
+            android:text="我的"
             android:textColor="@color/color_tab_text"
             android:textSize="12sp" />
     </LinearLayout>

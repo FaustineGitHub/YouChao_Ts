@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:background="@color/white"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <include layout="@layout/include_titlebar"/>
+    <ImageView
+        android:id="@+id/iv_game_head"
+        android:layout_width="match_parent"
+        android:layout_height="400px"
+        android:scaleType="fitXY"
+        android:background="@color/colorPrimary"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="80px"
+        android:layout_marginLeft="24px"
+        android:gravity="center_vertical"
+        android:text="休闲娱乐\t放松大脑"/>
+    <View
+        style="@style/marginleft_30_view"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/game_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

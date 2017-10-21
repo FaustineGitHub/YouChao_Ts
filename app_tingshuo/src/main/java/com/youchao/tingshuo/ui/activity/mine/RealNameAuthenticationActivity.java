@@ -1,16 +1,14 @@
-package com.youchao.tingshuo.ui.activity.money;
+package com.youchao.tingshuo.ui.activity.mine;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.youchao.tingshuo.R;
-import com.youchao.tingshuo.ui.activity.MainActivity;
-import com.youchao.tingshuo.ui.activity.MainActivity_Bottom;
 import com.youchao.tingshuo.ui.base.BaseActivity;
 
 import butterknife.Bind;
@@ -18,32 +16,30 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * Created by dell on 2017/10/18.
- * 付款成功
+ * Created by dell on 2017/10/20.
+ * 实名认证
  */
 
-public class PaymentSuccessActivity extends BaseActivity implements View.OnClickListener{
+public class RealNameAuthenticationActivity extends BaseActivity implements View.OnClickListener {
     @Bind(R.id.iv_toptitle_back)
     ImageView mIvToptitleBack;
     @Bind(R.id.tv_toptitle_title)
     TextView mTvToptitleTitle;
-    @Bind(R.id.success_img)
-    ImageView mSuccessImg;
-    @Bind(R.id.success_tv)
-    TextView mSuccessTv;
-    @Bind(R.id.success_tv_left)
-    TextView mSuccessTvLeft;
-    @Bind(R.id.success_tv_right)
-    TextView mSuccessTvRight;
+    @Bind(R.id.real_edit_name)
+    EditText mRealEditName;
+    @Bind(R.id.real_edit_idcard)
+    EditText mRealEditIdcard;
+    @Bind(R.id.tv_commit)
+    TextView mTvCommit;
 
     @Override
     protected int initResource() {
-        return R.layout.activity_payment_success;
+        return R.layout.activity_real_name_authentication;
     }
 
     @Override
     protected void initComponent() {
-        mTvToptitleTitle.setText("付款成功");
+        mTvToptitleTitle.setText("实名认证");
 
     }
 
@@ -59,11 +55,10 @@ public class PaymentSuccessActivity extends BaseActivity implements View.OnClick
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.iv_toptitle_back, R.id.success_tv_left, R.id.success_tv_right})
+    @OnClick({R.id.iv_toptitle_back, R.id.tv_commit})
     public void onClick(View view) {
-        Intent intent = null;
         switch (view.getId()) {
-            case R.id.iv_toptitle_back://返回
+            case R.id.iv_toptitle_back:
                 View view1 = this.getWindow().peekDecorView();
                 if (view1 != null) {
                     InputMethodManager inputmanger = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -71,16 +66,9 @@ public class PaymentSuccessActivity extends BaseActivity implements View.OnClick
                 }
                 this.finish();
                 break;
-            case R.id.success_tv_left://发表评价
-                intent = new Intent(this, PingJiaActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.success_tv_right://返回首页
-                intent = new Intent(this, MainActivity_Bottom.class);
-                startActivity(intent);
+            case R.id.tv_commit:
+                finish();
                 break;
         }
     }
-
-
 }

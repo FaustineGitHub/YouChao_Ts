@@ -18,7 +18,7 @@ public class AnimUtil{
                 RotateAnimation.RELATIVE_TO_SELF, 0.5f,
                 RotateAnimation.RELATIVE_TO_SELF, 1);
 
-        animation.setDuration(500);
+        animation.setDuration(100);
         animation.setFillAfter(true);
         animation.setStartOffset(startOffse);
 
@@ -61,7 +61,7 @@ public class AnimUtil{
                 RotateAnimation.RELATIVE_TO_SELF, 0.5f,
                 RotateAnimation.RELATIVE_TO_SELF, 1);
 
-        animation.setDuration(500);
+        animation.setDuration(100);
         animation.setFillAfter(true);
         animation.setStartOffset(startOffse);
 
