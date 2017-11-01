@@ -111,6 +111,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_below="@id/introduce_tv_nickname">
                         <TextView
+                            android:id="@+id/tv_introduce_attention"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/introduce_tv_info"
@@ -126,6 +127,7 @@
                             android:layout_marginRight="30px"
                             />
                         <TextView
+                            android:id="@+id/tv_introduce_fans"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/introduce_tv_info"
@@ -170,6 +172,7 @@
             android:layout_weight="1"
             >
             <TextView
+                android:id="@+id/tv_guanzhu_person"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="+关注"

@@ -66,8 +66,6 @@ public class CommonUtlis {
         } else {
             back.setVisibility(View.GONE);
         }
-
-
     }
 
     /**

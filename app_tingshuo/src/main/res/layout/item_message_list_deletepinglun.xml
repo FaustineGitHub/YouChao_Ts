@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="horizontal"
               android:layout_width="wrap_content"
-              android:layout_height="136px">
+              android:layout_height="wrap_content">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,21 +25,20 @@
             <TextView
                 android:id="@+id/tv_customer_name"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:text="黑乎乎"
                 android:textColor="@color/colorTabSelected"
                 android:textSize="30px"
                 android:gravity="center_vertical"/>
             <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="10px"
                 android:layout_marginBottom="10px"
                 android:layout_marginRight="20px"
                 android:layout_marginLeft="8px"
-                android:layout_weight="1">
+                >
                 <TextView
                     android:id="@+id/iv_customer_delete"
                     android:layout_width="190px"
@@ -69,7 +68,7 @@
         <RelativeLayout
             android:layout_width="88px"
             android:layout_height="88px"
-            android:layout_centerVertical="true"
+            android:layout_marginTop="16px"
             android:layout_alignParentRight="true"
             >
             <ImageView

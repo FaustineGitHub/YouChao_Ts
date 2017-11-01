@@ -6,6 +6,7 @@ package com.youchao.tingshuo.utils;
 
 public class ConstantUtlis {
 
+
     // 微信Appid
     public static String WXAPPID = "wx8c55439fc255912a";
 
@@ -28,10 +29,38 @@ public class ConstantUtlis {
     public static String MYSP = "yiyeshopinfo";
     // 手机ID
     public static String SP_PHENEID = "SP_PHENEID";
+    // 手机高度
+    public static String SP_PHONEHEIGHT = "SP_PHONEHEIGHT";
+    // 手机信息kv格式
+    public static String SP_PHONEINFO_KV = "SP_PHONEINFO_KV";
     // 手机名称
     public static String SP_PHENENAME = "SP_PHENENAME";
     // 用户随机码
     public static String SP_RANDOMCODE = "SP_RANDOMCODE";
+    // 用户Token
+    public static String SP_TOKEN = "SP_TOKEN";
+    // 用户手机号
+    public static String SP_MOBILE = "SP_MOBILE";
+    // 用户名
+    public static String SP_USERNAME = "SP_USERNAME";
+    // 用户昵称
+    public static String SP_NICKNAME = "SP_NICKNAME";
+    //用户id
+    public static String SP_USERID = "SP_USERID";
+    //用户性别
+    public static String SP_USERSEX = "SP_USERSEX";
+    //用户等级
+    public static String SP_USERLEVEL = "SP_USERLEVEL";
+    //用户类型
+    public static String SP_USERTYPE = "SP_USERTYPE";
+    //用户头像
+    public static final String SP_HEADPIC = "SP_HEADPIC";
+    //用户背景图
+    public static final String SP_COVER = "SP_COVER";
+    //用户生日
+    public static final String SP_USERBIRTHDAY = "SP_USERBIRTHDAY";
+    //用户签名
+    public static final String SP_USERQIANMING = "SP_USERQIANMING";
     // 账号认证状态
     public static String SP_AUTHENTIFICATIONSTATE = "SP_AUTHENTIFICATIONSTATE";
     //账号登录状态
@@ -44,6 +73,8 @@ public class ConstantUtlis {
     public static String SP_ISFROMLOGINTOMAIN = "SP_ISFROMLOGINTOMAIN";
     //来自通知消息
     public static String SP_FROMNOTIFICATION = "SP_FROMNOTIFICATION";
+
+    public static String SP_PHONEINFO_JSON = "SP_PHONEINFO_JSON";
 
     // 数据库MESSAGE表
     public static String DB_MESSAGE = "DB_message";

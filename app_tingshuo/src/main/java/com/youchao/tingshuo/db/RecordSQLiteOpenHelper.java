@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 //SQLiteOpenHelper子类用于打开数据库并进行对用户搜索历史记录进行增删减除的操作
 public class RecordSQLiteOpenHelper extends SQLiteOpenHelper {
-    private static String name = "search.db";
+    private static String name = "tingshuo.db";
     private static Integer version = 1;
 
     public RecordSQLiteOpenHelper(Context context) {
@@ -19,7 +19,7 @@ public class RecordSQLiteOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         //打开数据库，建立了一个叫records的表，里面只有一列name来存储历史记录：
-        db.execSQL("create table records(id integer primary key autoincrement,name varchar(200))");
+        db.execSQL("create table sousuo_jilu(userid integer,name varchar(200),head_pic text)");
     }
 
     @Override

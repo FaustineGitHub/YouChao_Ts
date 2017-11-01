@@ -5,23 +5,16 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bartoszlipinski.recyclerviewheader.RecyclerViewHeader;
-import com.scwang.smartrefresh.header.MaterialHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
-import com.scwang.smartrefresh.layout.footer.BallPulseFooter;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.youchao.tingshuo.R;
@@ -32,6 +25,7 @@ import com.youchao.tingshuo.ui.activity.shouye.TuiJianActivity;
 import com.youchao.tingshuo.ui.adapter.shouye.CircleMessage1Adapter;
 import com.youchao.tingshuo.ui.adapter.shouye.GalleryAdapter;
 import com.youchao.tingshuo.ui.base.BaseFragment;
+import com.youchao.tingshuo.ui.widget.dialog.MyDialogBuilder;
 import com.youchao.tingshuo.ui.widget.dialog.ShareDialog;
 import com.youchao.tingshuo.utils.L;
 import com.youchao.tingshuo.utils.MToast;
@@ -43,7 +37,6 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * Created by dell on 2017/9/12.
@@ -52,12 +45,6 @@ import butterknife.OnClick;
 
 public class GuanZhuFragment extends BaseFragment implements View.OnClickListener {
     public static final String TAG = GuanZhuFragment.class.getSimpleName();
-//    @Bind(R.id.id_recyclerview_tuijian)
-//    RecyclerView mIdRecyclerviewTuijian;
-//    @Bind(R.id.iv_tuijian)
-//    ImageView mIvTuijian;
-//    @Bind(R.id.rl_shouye_tuijian)
-//    RelativeLayout mRlShouyeTuijian;
     @Bind(R.id.recycler_view_shouye)
     RecyclerView mRecyclerViewShouye;
     @Bind(R.id.swipe_layout_shouye)
@@ -77,6 +64,7 @@ public class GuanZhuFragment extends BaseFragment implements View.OnClickListene
     private ArrayList<String> imgUrls2;  //无图片数组
     private ArrayList<String> imgUrls3;  //六张图片数组
     private ArrayList<String> imgUrls4;  //四张图片数组
+    private MyDialogBuilder mMyDialogBuilder;
 
     public static Fragment newInstance(int position) {
         GuanZhuFragment fragment = new GuanZhuFragment();
@@ -111,6 +99,7 @@ public class GuanZhuFragment extends BaseFragment implements View.OnClickListene
         View headerView = View.inflate(getActivity(), R.layout.item_recycler_header, null);
         TextView textView = headerView.findViewById(R.id.tv_tuijian_type);
         RecyclerView mIdRecyclerviewTuijian = headerView.findViewById(R.id.id_recyclerview_tuijian);
+       setHeaderViewListener(headerView);
         //设置布局管理器
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -133,6 +122,16 @@ public class GuanZhuFragment extends BaseFragment implements View.OnClickListene
         getData_jiaoyi();
     }
 
+    private void setHeaderViewListener(View headerView) {
+        headerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), TuiJianActivity.class);
+                intent.putExtra("TUIJIANTYPE","TONGCHNEG");
+                startActivity(intent);
+            }
+        });
+    }
 
 
     private void mockData() {
@@ -236,7 +235,6 @@ public class GuanZhuFragment extends BaseFragment implements View.OnClickListene
                     }
                 });
                 shareDialog.show();
-                //MToast.showToast(getActivity(), "转发");
             }
         });
         circleMessageAdapter.setOnUserIconClickListener(new CircleMessage1Adapter.OnUserIconClickListener() {
@@ -271,6 +269,28 @@ public class GuanZhuFragment extends BaseFragment implements View.OnClickListene
                 //intent.putExtra("url", mList.get(position).getUrl());
                 //intent.putExtra("title", mList.get(position).getTitle());
                 startActivity(intent);
+            }
+        });
+        circleMessageAdapter.setOnDeleteClickListener(new CircleMessage1Adapter.OnDeleteClickListener() {
+            @Override
+            public void onDeleteClick(View v, final int position) {
+                mMyDialogBuilder = MyDialogBuilder.getInstance(mContext);
+                mMyDialogBuilder.withEffects(MyDialogBuilder.SlideTop, MyDialogBuilder.SlideTopDismiss)
+                        .withTingshuoNormalContent("该圈子将彻底删除")
+                        .setBtn2TingshuoNormal(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                mMyDialogBuilder.dismiss();
+                            }
+                        }, new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                MToast.showToast(mContext,"删除成功");
+                                mMyDialogBuilder.dismiss();
+                            }
+                        })
+                        .show();
+
             }
         });
 

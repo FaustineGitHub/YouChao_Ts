@@ -24,6 +24,8 @@ import com.youchao.tingshuo.ui.activity.shouye.SousuoActivity;
 import com.youchao.tingshuo.ui.base.BaseFragment;
 import com.youchao.tingshuo.ui.fragment.shouye.GuanZhuFragment;
 import com.youchao.tingshuo.ui.fragment.shouye.HotFragment;
+import com.youchao.tingshuo.ui.widget.dialog.MyDialogBuilder;
+import com.youchao.tingshuo.utils.MToast;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -64,8 +66,11 @@ public class CircleFragment extends BaseFragment implements View.OnClickListener
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_shop, container, false);
         ButterKnife.bind(this, view);
+
         return view;
     }
+
+
 
 
     @Override

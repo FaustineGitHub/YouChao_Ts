@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -16,6 +17,7 @@ import com.youchao.tingshuo.network.OnDataListener;
 import com.youchao.tingshuo.network.RequestAction;
 import com.youchao.tingshuo.ui.activity.AutoLayoutActivity;
 import com.youchao.tingshuo.ui.activity.login.LoginActivity;
+import com.youchao.tingshuo.ui.widget.dialog.LoadDialog;
 import com.youchao.tingshuo.ui.widget.dialog.MyNewDialogBuilder;
 import com.youchao.tingshuo.ui.widget.dialog.MyDialogBuilder;
 import com.youchao.tingshuo.utils.ConstantUtlis;
@@ -63,6 +65,8 @@ public abstract class BaseActivity extends AutoLayoutActivity implements OnDataL
         super.onCreate(savedInstanceState);
         //禁止横屏
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        preferences = SharedPreferencesUtils.getInstance().getSharedPreferences();
+        editor = preferences.edit();
         mContext = this;
         //TODO preferences = SharedPreferencesUtils.getInstance().getSharedPreferences();
         //TODO editor = preferences.edit();
@@ -70,6 +74,7 @@ public abstract class BaseActivity extends AutoLayoutActivity implements OnDataL
         App.getInstance().addActivity(this);
         setContentView(initResource());
         ButterKnife.bind(this);
+
         //修改字体
         //TypefaceUtil.replaceFont(this, "fonts/youchao_ziti.ttf");
         initComponent();
@@ -119,7 +124,7 @@ public abstract class BaseActivity extends AutoLayoutActivity implements OnDataL
     public void onStart(int requestTag, int showLoad) {
         L.d(TAG, "onStart: " + requestTag);
         if (showLoad == 0 || showLoad == 1) {
-            //LoadDialog.show(mContext, requestHandleArrayList);
+            LoadDialog.show(mContext, requestHandleArrayList);
         }
     }
 

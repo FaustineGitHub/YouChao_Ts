@@ -47,6 +47,8 @@ public class CircleMessage1Adapter extends MyBaseAdapter {
     private OnDianZanClickListener onDianZanClickListener;
     //item中头像按钮的回调接口
     private OnUserIconClickListener onUserIconClickListener;
+    //item中删除按钮的回调接口
+    private OnDeleteClickListener onDeleteClickListener;
     //标志
     private String tag;
 
@@ -104,6 +106,7 @@ public class CircleMessage1Adapter extends MyBaseAdapter {
     public void onBindViewHolder_my(RecyclerView.ViewHolder holder, int position) {
         BaseViewHolder viewHolder = (BaseViewHolder) holder;
         viewHolder.tv_guanzhu.setVisibility(View.GONE);
+        viewHolder.iv_delete_circle.setVisibility(View.VISIBLE);
         /*L.e("TAG",tag);
         if ("HotFragment".equals(tag)){
             holder.tv_guanzhu.setVisibility(View.VISIBLE);
@@ -231,6 +234,17 @@ public class CircleMessage1Adapter extends MyBaseAdapter {
                     int pos = holder.getLayoutPosition();
                     onUserIconClickListener.onUserIconClick(view, pos);
                 }
+            }
+        });
+        /**
+         * 删除消息
+         */
+        holder.iv_delete_circle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 获取最新item的位置
+                int pos = holder.getLayoutPosition();
+                onDeleteClickListener.onDeleteClick(view, pos);
             }
         });
     }
@@ -421,7 +435,7 @@ public class CircleMessage1Adapter extends MyBaseAdapter {
      */
     class BaseViewHolder extends RecyclerView.ViewHolder{
         LinearLayout ll_zhuanfa,ll_pinglun,ll_dianzan;//点击事件
-        ImageView iv_circle_icon,ivDianzan;
+        ImageView iv_circle_icon,ivDianzan,iv_delete_circle;
         TextView tv_circle_name,tv_circle_date,tv_circle_info,tv_pinglun,tv_dianzan,tv_guanzhu;
 
         public BaseViewHolder(View itemView) {
@@ -430,6 +444,7 @@ public class CircleMessage1Adapter extends MyBaseAdapter {
             ll_pinglun = itemView.findViewById(R.id.ll_pinglun);
             ll_dianzan = itemView.findViewById(R.id.ll_dianzan);
             ivDianzan = itemView.findViewById(R.id.iv_dianzan);
+            iv_delete_circle = itemView.findViewById(R.id.iv_delete_circle);
             iv_circle_icon = itemView.findViewById(R.id.iv_circle_icon);
             tv_circle_name = itemView.findViewById(R.id.tv_circle_name);
             tv_circle_date = itemView.findViewById(R.id.tv_circle_date);
@@ -486,6 +501,15 @@ public class CircleMessage1Adapter extends MyBaseAdapter {
      */
     public interface OnDianZanClickListener {
         void onDianZanClick(View v, int position);
+    }
+    /**
+     * 删除按钮的点击事件回调接口
+     */
+    public interface OnDeleteClickListener {
+        void onDeleteClick(View v, int position);
+    }
+    public void setOnDeleteClickListener(OnDeleteClickListener onDeleteClickListener){
+        this.onDeleteClickListener = onDeleteClickListener;
     }
 
 

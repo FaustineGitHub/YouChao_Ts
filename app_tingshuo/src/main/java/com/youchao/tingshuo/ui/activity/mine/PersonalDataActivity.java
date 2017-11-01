@@ -163,18 +163,16 @@ public class PersonalDataActivity extends BaseActivity implements View.OnClickLi
             case R.id.rl_sex:
                 String[] datas = {"男", "女"};
                 final MyDialogBuilder myDialogBuilder = MyDialogBuilder.getInstance(mContext);
-                myDialogBuilder.withTitie("性别")
+                myDialogBuilder
+                        .withTitie("性别")
                         .withEffects(MyDialogBuilder.SlideTop, MyDialogBuilder.SlideTopDismiss)
-                        .setBtn1Bg(R.drawable.bg_text)
-                        .setBtn1Text("取消")
                         .setSingleChoice(mContext, datas, R.layout.item_textcenter, new MyDialogBuilder.SingleChoiceConvert() {
                             @Override
                             public void convert(ViewHolder holder, String s) {
                                 holder.setText(R.id.tv_item_center, s);
-                            }
+                           }
                         }, new MyDialogBuilder.SingleChoiceOnItemClick() {
-                            @Override
-                            public void onItemClick(String data) {
+                            @Override public void onItemClick(String data) {
                                 switch (data){
                                     case "男":
                                         mTvSex.setText("男");
@@ -186,13 +184,8 @@ public class PersonalDataActivity extends BaseActivity implements View.OnClickLi
                                         break;
                                 }
                             }
-                        })
-                        .setBtn1(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                myDialogBuilder.dismiss();
-                            }
-                        }).show();
+                       }).show();
+
                 break;
             case R.id.rl_zxing://获取二维码
                 /*intent = new Intent(this, HuoQuErWeiMaActivity.class);

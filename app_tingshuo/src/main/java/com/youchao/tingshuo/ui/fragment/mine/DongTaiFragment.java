@@ -19,9 +19,11 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.youchao.tingshuo.R;
 import com.youchao.tingshuo.bean.CommonNews;
 import com.youchao.tingshuo.ui.activity.shouye.PingLunDongTaiActivity;
+import com.youchao.tingshuo.ui.adapter.shouye.CircleMessage1Adapter;
 import com.youchao.tingshuo.ui.adapter.shouye.CircleMessageAdapter;
 import com.youchao.tingshuo.ui.adapter.shouye.GalleryAdapter;
 import com.youchao.tingshuo.ui.base.BaseFragment;
+import com.youchao.tingshuo.ui.widget.dialog.MyDialogBuilder;
 import com.youchao.tingshuo.ui.widget.dialog.ShareDialog;
 import com.youchao.tingshuo.utils.L;
 import com.youchao.tingshuo.utils.MToast;
@@ -40,18 +42,8 @@ import butterknife.ButterKnife;
 
 public class DongTaiFragment extends BaseFragment implements View.OnClickListener {
     public static final String TAG = DongTaiFragment.class.getSimpleName();
-   /* @Bind(R.id.id_recyclerview_tuijian)
-    RecyclerView mIdRecyclerviewTuijian;
-    @Bind(R.id.iv_tuijian)
-    ImageView mIvTuijian;
-    @Bind(R.id.rl_shouye_tuijian)
-    RelativeLayout mRlShouyeTuijian;*/
     @Bind(R.id.recycler_view_shouye)
     RecyclerView mRecyclerViewShouye;
-    /*@Bind(R.id.header)
-    RecyclerViewHeader mHeader;*/
-    /*@Bind(R.id.recycler_view_shouye)
-    SwipeMenuRecyclerView mRecyclerViewShouye;*/
     @Bind(R.id.swipe_layout_shouye)
     SmartRefreshLayout mSmartRefreshLayout;
 
@@ -69,6 +61,7 @@ public class DongTaiFragment extends BaseFragment implements View.OnClickListene
     private ArrayList<String> imgUrls4;  //四张图片数组
 
     private ShareDialog shareDialog;
+    private MyDialogBuilder mMyDialogBuilder;
 
     public static Fragment newInstance(int position) {
         DongTaiFragment fragment = new DongTaiFragment();
@@ -245,6 +238,28 @@ public class DongTaiFragment extends BaseFragment implements View.OnClickListene
                 //intent.putExtra("url", mList.get(position).getUrl());
                 //intent.putExtra("title", mList.get(position).getTitle());
                 startActivity(intent);
+            }
+        });
+        circleMessageAdapter.setOnDeleteClickListener(new CircleMessageAdapter.OnDeleteClickListener() {
+            @Override
+            public void onDeleteClick(View v, final int position) {
+                mMyDialogBuilder = MyDialogBuilder.getInstance(mContext);
+                mMyDialogBuilder.withEffects(MyDialogBuilder.SlideTop, MyDialogBuilder.SlideTopDismiss)
+                        .withTingshuoNormalContent("该圈子将彻底删除")
+                        .setBtn2TingshuoNormal(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                mMyDialogBuilder.dismiss();
+                            }
+                        }, new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                MToast.showToast(mContext,"删除成功");
+                                mMyDialogBuilder.dismiss();
+                            }
+                        })
+                        .show();
+
             }
         });
 

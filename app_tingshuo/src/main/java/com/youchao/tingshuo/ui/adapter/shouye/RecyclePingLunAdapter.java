@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.youchao.tingshuo.R;
@@ -61,7 +62,7 @@ public class RecyclePingLunAdapter extends RecyclerView.Adapter<RecyclePingLunAd
             mode1(holder);
         }
         //设置item的点赞事件
-        holder.pinglun_tv_dianzan.setOnClickListener(new View.OnClickListener() {
+        holder.pinglun_ll_dianzan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (onDianZanClickListener != null) {
@@ -72,7 +73,7 @@ public class RecyclePingLunAdapter extends RecyclerView.Adapter<RecyclePingLunAd
                 }
             }
         });
-        holder.pinglun_tv_huifu.setOnClickListener(new View.OnClickListener() {
+        holder.pinglun_ll_huifu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (onHuiFuClickListener != null) {
@@ -88,9 +89,9 @@ public class RecyclePingLunAdapter extends RecyclerView.Adapter<RecyclePingLunAd
      */
     private void mode1(RecyclePingLunAdapter.BaseViewHolder holder) {
         String username = "大乌龟";
-        SpannableString spannableString = new SpannableString("回复"+username+"大乌龟dfsgsdgsdgdgergwggsergi社会公示oh个i送额好贵i哦是如果i哦记得更加生动苹果键盘是佛的几个破的设计风格 个破欸如果拍摄日恶搞色额是如果和人格人格");
-        ForegroundColorSpan colorSpan = new ForegroundColorSpan(Color.parseColor("#FFD800"));
-        spannableString.setSpan(colorSpan, 2, username.length()+2, Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+        SpannableString spannableString = new SpannableString("回复"+username+":大乌龟dfsgsdgsdgdgergwggsergi社会公示oh个i送额好贵i哦是如果i哦记得更加生动苹果键盘是佛的几个破的设计风格 个破欸如果拍摄日恶搞色额是如果和人格人格");
+        ForegroundColorSpan colorSpan = new ForegroundColorSpan(Color.parseColor("#12cec8"));
+        spannableString.setSpan(colorSpan, 2, username.length()+3, Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
         holder.pinglun_tv_content_normal.setText(spannableString);
     }
 
@@ -99,10 +100,13 @@ public class RecyclePingLunAdapter extends RecyclerView.Adapter<RecyclePingLunAd
         return  mList.size();
     }
     public class BaseViewHolder extends RecyclerView.ViewHolder {
+        RelativeLayout pinglun_ll_huifu,pinglun_ll_dianzan;
         ImageView fujing_iv_usericon;
         TextView pinglun_tv_name,pinglun_tv_time,pinglun_tv_content_normal,pinglun_tv_huifu,pinglun_tv_dianzan;
         public BaseViewHolder(View itemView) {
             super(itemView);
+            pinglun_ll_huifu = itemView.findViewById(R.id.pinglun_ll_huifu);
+            pinglun_ll_dianzan = itemView.findViewById(R.id.pinglun_ll_dianzan);
             fujing_iv_usericon = itemView.findViewById(R.id.fujing_iv_usericon);
             pinglun_tv_name = itemView.findViewById(R.id.pinglun_tv_name);
             pinglun_tv_time = itemView.findViewById(R.id.pinglun_tv_time);

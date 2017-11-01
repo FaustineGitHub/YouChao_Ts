@@ -1,6 +1,7 @@
 package com.youchao.tingshuo.ui.adapter.shouye;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +9,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.youchao.tingshuo.R;
+import com.youchao.tingshuo.utils.ImageLoaderUtil;
 
 import java.util.List;
 
@@ -38,14 +42,14 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.BaseViewHo
 
     @Override
     public void onBindViewHolder(final BaseViewHolder holder, int position) {
-        holder.setData(mList.get(position)[1]+mList.get(position)[0]);
+        holder.tv_item_search.setText(mList.get(position)[1]);
+        ImageLoader.getInstance().displayImage( mList.get(position)[2],holder.iv_item_searchicon, ImageLoaderUtil.getCircleBitmapOption(Color.WHITE,1));
         //设置item的删除事件
         holder.iv_item_clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (onDeleteListener != null) {
                     // 获取最新item的位置
-
                     int pos = holder.getLayoutPosition();
                     onDeleteListener.onDeleteClick(view, pos);
                 }
@@ -79,8 +83,8 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.BaseViewHo
             iv_item_clear = itemView.findViewById(R.id.iv_item_clear);
         }
         //设置数据
-        public void setData(String str) {
-            tv_item_search.setText(str);
+        public void setData() {
+
         }
     }
     /**

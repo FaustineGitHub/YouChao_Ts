@@ -28,7 +28,7 @@ public class SharedPreferencesUtils {
 
     private SharedPreferencesUtils() {
         mSharedPreferencesUtlis = this;
-        //TODO mPreferences = mContext.getSharedPreferences(ConstantUtlis.MYSP, Context.MODE_PRIVATE);
+        mPreferences = mContext.getSharedPreferences(ConstantUtlis.MYSP, Context.MODE_PRIVATE);
     }
 
     public SharedPreferences getSharedPreferences() {

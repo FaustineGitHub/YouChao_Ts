@@ -21,6 +21,7 @@ import com.youchao.tingshuo.R;
 import com.youchao.tingshuo.bean.CommonNews;
 import com.youchao.tingshuo.ui.activity.mine.PersonalIntroduceActivity;
 import com.youchao.tingshuo.ui.activity.shouye.PingLunDongTaiActivity;
+import com.youchao.tingshuo.ui.activity.shouye.TuiJianActivity;
 import com.youchao.tingshuo.ui.adapter.shouye.CircleMessageAdapter;
 import com.youchao.tingshuo.ui.adapter.shouye.GalleryAdapter;
 import com.youchao.tingshuo.ui.base.BaseFragment;
@@ -42,19 +43,8 @@ import butterknife.ButterKnife;
 
 public class HotFragment extends BaseFragment implements View.OnClickListener {
     public static final String TAG = HotFragment.class.getSimpleName();
-    /*@Bind(R.id.id_recyclerview_tuijian)
-    RecyclerView mIdRecyclerviewTuijian;
-    @Bind(R.id.iv_tuijian)
-    ImageView mIvTuijian;
-    @Bind(R.id.rl_shouye_tuijian)
-    RelativeLayout mRlShouyeTuijian;*/
     @Bind(R.id.recycler_view_shouye)
     RecyclerView mRecyclerViewShouye;
-   /* @Bind(R.id.header)
-    RecyclerViewHeader mHeader;*/
-
-    /*@Bind(R.id.tv_tuijian_type)
-    TextView mTvTuijianType;*/
     @Bind(R.id.swipe_layout_shouye)
     SmartRefreshLayout mSmartRefreshLayout;
 
@@ -104,6 +94,7 @@ public class HotFragment extends BaseFragment implements View.OnClickListener {
         View headerView = View.inflate(getActivity(), R.layout.item_recycler_header, null);
         TextView textView = headerView.findViewById(R.id.tv_tuijian_type);
         RecyclerView mIdRecyclerviewTuijian = headerView.findViewById(R.id.id_recyclerview_tuijian);
+        setHeaderViewListener(headerView);
         //设置布局管理器
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -125,6 +116,16 @@ public class HotFragment extends BaseFragment implements View.OnClickListener {
         setAdapterListener(mCircleMessageAdapter);
         getData_jiaoyi();
 
+    }
+    private void setHeaderViewListener(View headerView) {
+        headerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), TuiJianActivity.class);
+                intent.putExtra("TUIJIANTYPE","ERDUO");
+                startActivity(intent);
+            }
+        });
     }
     private void mockData() {
         imgUrls1 = new ArrayList<>();

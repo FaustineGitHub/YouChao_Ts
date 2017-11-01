@@ -18,7 +18,7 @@ import cz.msebera.android.httpclient.Header;
 
 public class HttpManager {
     private static AsyncHttpClient client = new AsyncHttpClient();
-    private static String URL = UrlUtlis.URL;
+    private static String URL = UrlUtlis.BASEURL;
 
     private static HttpManager httpManager;
 
@@ -108,6 +108,35 @@ public class HttpManager {
                 } else if (requsetType == 2) {
                     pullToRefreshLayout.loadmoreFinish(PullToRefreshLayout.FAIL);
                 }
+                onDataListener.onFailure(requestTag, errorResponse, showLoad);
+            }
+
+            @Override
+            public void onCancel() {
+                super.onCancel();
+                onDataListener.onCancel(requestTag, showLoad);
+            }
+        });
+    }
+    public static RequestHandle doGet(String url, final int requestTag, final OnDataListener onDataListener, final int showLoad) {
+        // 重连次数,超时时间
+        client.setMaxRetriesAndTimeout(0, 5000);
+        return client.get(url, new JsonHttpResponseHandler(){
+            @Override
+            public void onStart() {
+                super.onStart();
+                onDataListener.onStart(requestTag, showLoad);
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                onDataListener.onSuccess(requestTag, response, showLoad);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
                 onDataListener.onFailure(requestTag, errorResponse, showLoad);
             }
 

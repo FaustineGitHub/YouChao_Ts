@@ -16,6 +16,7 @@ import com.youchao.tingshuo.ui.adapter.ViewHolder;
 import com.youchao.tingshuo.ui.adapter.shouye.TuiJianAdapter;
 import com.youchao.tingshuo.ui.base.BaseActivity;
 import com.youchao.tingshuo.utils.ImageLoaderUtil;
+import com.youchao.tingshuo.view.ListViewDecoration1;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +39,7 @@ public class TuiJianActivity extends BaseActivity implements View.OnClickListene
     RecyclerView mRecyclerFansList;
     private List<String[]> mList;
     private TuiJianAdapter mTuiJianAdapter;
+    private String tuijian_type;
 
     @Override
     protected int initResource() {
@@ -46,7 +48,12 @@ public class TuiJianActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     protected void initComponent() {
-        mTvToptitleTitle.setText("耳朵推荐");
+        tuijian_type = getIntent().getStringExtra("TUIJIANTYPE");
+        if ("TONGCHNEG".equals(tuijian_type)){//同城推荐
+            mTvToptitleTitle.setText("同城推荐");
+        }else {
+            mTvToptitleTitle.setText("耳朵推荐");
+        }
     }
 
     @Override
@@ -57,6 +64,7 @@ public class TuiJianActivity extends BaseActivity implements View.OnClickListene
         mList.add(new String[]{"http://img.deyi.net/forum/month_1002/20100210_d1e176261300d8bbb79cfWX91vBOOKiP.jpg","TOM","帅气有迷人的反派角色","198","693","关注"});
         mTuiJianAdapter = new TuiJianAdapter(mList,this);
         mRecyclerFansList.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerFansList.addItemDecoration(new ListViewDecoration1(mContext));// 添加分割线。
         mRecyclerFansList.setAdapter(mTuiJianAdapter);
 
 
